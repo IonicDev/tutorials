@@ -1,0 +1,13 @@
+{
+    "activeDeviceId":"HVzG.5.59175f63-559c-467e-9542-21038c789f30",
+    "profiles": [
+        {
+            "deviceId":"HVzG.5.59175f63-559c-467e-9542-21038c789f30",
+            "aesCdEiKey":"785a7c71be4c54ca000ccd070f1477b383593d2fc0349b06115b0d718deb688e",
+            "aesCdIdcKey":"1d054811266dd5e530b6d3bdb7bbb6d92af6af3a1d72fd7832b6856219bf320d",
+            "creationTimestamp":1516223989,
+            "name":"TestProfile",
+            "server":"https://dev-api.ionic.com"
+        }
+    ]
+}
