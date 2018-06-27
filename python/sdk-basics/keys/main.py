@@ -4,6 +4,9 @@
 
 import os
 import sys
+import json
+import copy
+import binascii
 import ionicsdk
 
 # read persistor password from environment variable
@@ -15,8 +18,7 @@ if (persistorPassword == None):
 # initialize agent with sample plaintext profile persistor
 try:
     persistorPassword = "ionic123"
-    persistorPath = os.path.abspath("../../../sample-data/persistors/sample-persistor.pw")
-    print(persistorPath)
+    persistorPath = os.path.expanduser("~/.ionicsecurity/profiles.pw")
     persistor = ionicsdk.DeviceProfilePersistorPasswordFile(persistorPath, persistorPassword)
     agent = ionicsdk.Agent(None, persistor)
 except ionicsdk.exceptions.IonicException as e:
@@ -31,7 +33,8 @@ fixed_attributes = {
 
 # define mutable attributes
 mutable_attributes = {
-    "classification": ["Restricted"]
+    "classification": ["Restricted"],
+    "designated_owner": ["joe@hq.example.com"]
 }
 
 # create new key
@@ -44,6 +47,7 @@ except ionicsdk.exceptions.IonicException as e:
     sys.exit(-2)
 
 # display new key
+print("\nNEW KEY:")
 print("KeyId        : " + created_key.id)
 print("KeyBytes     : " + binascii.hexlify(created_key.bytes))
 print("FixedAttrs   : " + json.dumps(created_key.attributes))
@@ -51,12 +55,13 @@ print("MutableAttrs : " + json.dumps(created_key.mutableAttributes))
 
 # get key by KeyId
 try:
-    fetched_key = agent.getkey(keyId)
+    fetched_key = agent.getkey(created_key.id)
 except ionicsdk.exceptions.IonicException as e:
     print("Error fetching a key: {0}".format(e.message))
     sys.exit(-2)
 
 # display fetched key
+print("\nFETCHED KEY:")
 print("KeyId        : " + fetched_key.id)
 print("KeyBytes     : " + binascii.hexlify(fetched_key.bytes))
 print("FixedAttrs   : " + json.dumps(fetched_key.attributes))
@@ -68,18 +73,27 @@ new_mutable_attributes = {
 }
 
 # merge new and existing mutable attributes
-updated_attributes = copy.copy(dic(fetched_key.mutableAttributes))
+updated_attributes = copy.copy(dict(fetched_key.mutableAttributes))
 for key,value in new_mutable_attributes.items():
     updated_attributes[key] = value
 
 # update key
 try:
-    updated_key = agent.updatekey(key_id, updated_attributes)
+    updated_key = agent.updatekey(ionicsdk.UpdateKeyData(
+        id=fetched_key.id, 
+        bytes=fetched_key.bytes, 
+        mutableAttributes=updated_attributes,
+        attributes=fetched_key.attributes,
+        attributesSigBase64FromServer=fetched_key.attributesSigBase64FromServer,
+        mutableAttributesSigBase64FromServer=fetched_key.mutableAttributesSigBase64FromServer
+        )
+    )
 except ionicsdk.exceptions.IonicException as e:
     print("Error fetching a key: {0}".format(e.message))
     sys.exit(-2)
 
 # display updated key
+print("\nUPDATED KEY:")
 print("KeyId        : " + updated_key.id)
 print("KeyBytes     : " + binascii.hexlify(updated_key.bytes))
 print("FixedAttrs   : " + json.dumps(updated_key.attributes))
