@@ -1,0 +1,26 @@
+# Java
+*.class
+*.jar
+target/
+
+# VS
+.vs/
+*.opendb
+*.sdf
+*.vcxproj.user
+Debug/
+Release/
+obj/
+
+# C++
+Makefile
+CMakeFiles
+CMakeCache.txt
+target
+cmake_install.cmake
+makefile
+*_linux
+*vcx*
+
+# Internal
+_configure_buildfiles

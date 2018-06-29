@@ -37,7 +37,7 @@ mutable_attributes = {
     "designated_owner": ["joe@hq.example.com"]
 }
 
-# create new key
+# create new key with fixed and mutable attributes
 try:
     created_key = agent.createkey(
         attributes=fixed_attributes, 
