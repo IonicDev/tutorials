@@ -2,7 +2,7 @@
     "activeDeviceId": "ABcd.4.9f521b6f-ac9e-48bc-a54a-2f1730288bf",
     "profiles": [
         {
-            "name": "sample-profile-01",
+            "name": "ABcd-profile",
             "deviceId": "ABcd.4.9f521b6f-ac9e-48bc-a54a-2f1730288bf",
             "server": "https://api.ionic.com",
             "aesCdEiKey": "51B967286B50565894714770B09698B841927B93449998924823BB7615A969A5",
@@ -10,15 +10,7 @@
             "creationTimestamp": 1523640111
         },
         {
-            "name": "sample-profile-02",
-            "deviceId": "ABcd.1.48sdf0-cs80-5802-sd80-d8s0df80sdfj",
-            "server": "https://api.ionic.com",
-            "aesCdEiKey": "965916161B552237310A4095A25A2B58ABAB49786B400783B008857878157758",
-            "aesCdIdcKey": "8809A4B332287462A4259488681B71816A468650204B327A8A136B4683658516",
-            "creationTimestamp": 1523640111
-        },
-        {
-            "name": "sample-profile-03",
+            "name": "EfGh-profile",
             "deviceId": "EfGh.1.54sdf8-sdfj-5802-sd80-248vwqucv9s73",
             "server": "https://api.ionic.com",
             "aesCdEiKey": "12FE5FCB75F1B8EEBC308F8475E79C21566AD2ECB4F1BC5FDAA4561AD636E1DF",

@@ -6,17 +6,10 @@ import os
 import sys
 import ionicsdk
 
-# read persistor password from environment variable
-persistorPassword = os.environ.get('IONIC_PERSISTOR_PASSWORD')
-if (persistorPassword == None):
-    print("[!] Please provide the persistor password as env variable: IONIC_PERSISTOR_PASSWORD")
-    sys.exit(1)
-
 # initialize agent with sample plaintext profile persistor
 try:
     persistorPassword = "ionic123"
     persistorPath = os.path.abspath("../../../sample-data/persistors/sample-persistor.pw")
-    print(persistorPath)
     persistor = ionicsdk.DeviceProfilePersistorPasswordFile(persistorPath, persistorPassword)
     agent = ionicsdk.Agent(None, persistor)
 except ionicsdk.exceptions.IonicException as e:
