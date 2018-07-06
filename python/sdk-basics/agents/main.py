@@ -17,7 +17,6 @@ if (persistorPassword == None):
 
 # initialize agent with sample plaintext profile persistor
 try:
-    persistorPassword = "ionic123"
     persistorPath = os.path.expanduser("~/.ionicsecurity/profiles.pw")
     persistor = ionicsdk.DeviceProfilePersistorPasswordFile(persistorPath, persistorPassword)
     agent = ionicsdk.Agent(None, persistor)
