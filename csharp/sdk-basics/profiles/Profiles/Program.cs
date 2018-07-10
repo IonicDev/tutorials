@@ -63,7 +63,7 @@ namespace Samples
             }
 
             // Display profile information.
-            Console.WriteLine("ALL PROFILES");
+            Console.WriteLine("ALL PROFILES:");
             foreach (DeviceProfile profile in profiles)
             {
                 Console.WriteLine("-----");
@@ -83,11 +83,11 @@ namespace Samples
 
             // Display the active profile device ID.
             DeviceProfile activeProfilesile = agent.ActiveProfile;
-            Console.WriteLine("ACTIVE PROFILE: " + activeProfilesile.DeviceId);
+            Console.WriteLine("\nACTIVE PROFILE: " + activeProfilesile.DeviceId);
             
             // Change the active profile.
             String newProfilesileId = "EfGh.1.54sdf8-sdfj-5802-sd80-248vwqucv9s73";
-            Console.WriteLine("\nSETTING NNEW ACTIVE PROFILE: " + newProfilesileId);
+            Console.WriteLine("\nSETTING NEW ACTIVE PROFILE: " + newProfilesileId);
             bool success = agent.SetActiveProfileById(newProfilesileId);
             if (! success)
             {
@@ -98,7 +98,7 @@ namespace Samples
 
             // Display the active device ID.
             DeviceProfile newActiveProfilesile = agent.ActiveProfile;
-            Console.WriteLine("NEW ACTIVE PROFILE: " + newActiveProfilesile.DeviceId);
+            Console.WriteLine("\nNEW ACTIVE PROFILE: " + newActiveProfilesile.DeviceId);
 
             WaitForInput();
         }

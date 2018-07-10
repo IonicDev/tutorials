@@ -111,10 +111,10 @@ namespace Samples
                 { ["key_id"] = createdKey.Id, 
                   ["b64_ciphertext"] = b64CipherText };
 
-            Console.WriteLine("CREATED KEYID: " + createdKey.Id);
-            Console.WriteLine("CIPHERTEXT   : {0}", BitConverter.ToString(cipherText).Replace("-", String.Empty));
+            Console.WriteLine("CREATED KEYID : " + createdKey.Id);
+            Console.WriteLine("CIPHERTEXT    : {0}", BitConverter.ToString(cipherText).Replace("-", String.Empty));
 
-            Console.WriteLine("\nPAYLOAD: " + JsonDump(payload));
+            Console.WriteLine("\nPAYLOAD       : " + JsonDump(payload));
 
             /*****************************************************************
              * RECEIVER
