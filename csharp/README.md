@@ -1,6 +1,9 @@
 # Ionic C# Tutorials
 
-To build and run an Ionic C# Tutorial, navigate into the directory of a specific sample task and follow the steps below.
+To build and run an Ionic C# Tutorial, navigate into the directory of a specific sample task and 
+follow the steps below.  The Ionic Security C# SDK is used in all the tutorials.  Go to
+[Ionic Developer SDK Setup](https://dev.ionic.com/tutorials/getting-started/sdk-setup) and
+click on the C# icon.
 
 Note: the sample apps expect a Password Persistor located at `~/.ionicsecurity/profiles.pw`. The password needs to be provided as an environment variable.
 
@@ -13,6 +16,7 @@ In a DOS window do:
 
 **Requirements:**
 - Visual Studio 2017
+- Ionic Security C# SDK
 
 **Build:**
 
