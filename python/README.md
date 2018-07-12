@@ -1,7 +1,7 @@
 # Ionic Python Tutorials
 
 To build and run an Ionic Python SDK Sample, navigate into the directory of a specific sample task and follow the steps below.
-The Ionic Security Python SDK is used in all the tutorials.  Go to
+The Ionic Python SDK is used in all the tutorials.  Go to
 [Ionic Developer SDK Setup](https://dev.ionic.com/tutorials/getting-started/sdk-setup) then
 click on the Python icon and the desired OS icon.
 
