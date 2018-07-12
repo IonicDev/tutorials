@@ -1,7 +1,7 @@
 # Ionic C++ Tutorials
 
 To build and run an Ionic C++ Tutorial, navigate into the directory of a specific sample task and follow the steps below depending on your platform.
-The Ionic Security C++ SDK is used in all the tutorials.  Go to 
+The Ionic C++ SDK is used in all the tutorials.  Go to 
 [Ionic Developer SDK Setup](https://dev.ionic.com/tutorials/getting-started/sdk-setup) then
 click on the C++ icon and the desired OS icon.
 
