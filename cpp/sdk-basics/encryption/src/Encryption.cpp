@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <cstdlib>
 #include <iostream>
+#include <map>
 
 #ifdef _WIN32
     #define HOMEVAR "USERPROFILE"
@@ -18,64 +19,85 @@
 
 int main(int argc, char* argv[]) {
 
-    int nErrorCode;
+	int nErrorCode;
 
-    // read persistor password from environment variable
-    char* cpersistorPassword = std::getenv("IONIC_PERSISTOR_PASSWORD");
-    if (cpersistorPassword == NULL) {
-        std::cerr << "[!] Please provide the persistor password as env variable: IONIC_PERSISTOR_PASSWORD" << std::endl;
-        exit(1);
-    }
-    std::string persistorPassword = std::string(cpersistorPassword);
+	// read persistor password from environment variable
+	char* cpersistorPassword = std::getenv("IONIC_PERSISTOR_PASSWORD");
+	if (cpersistorPassword == NULL) {
+		std::cerr << "[!] Please provide the persistor password as env variable: IONIC_PERSISTOR_PASSWORD" << std::endl;
+		exit(1);
+	}
+	std::string persistorPassword = std::string(cpersistorPassword);
 
-    // initialize agent with password persistor
-    std::string persistorPath = std::string(std::getenv(HOMEVAR)) + "/.ionicsecurity/profiles.pw";
-    ISAgentDeviceProfilePersistorPassword persistor;
-    persistor.setFilePath(persistorPath);
-    persistor.setPassword(persistorPassword);
-    ISAgent agent;
-    nErrorCode = agent.initialize(persistor);
-    if (nErrorCode != ISAGENT_OK) {
-        std::cerr << "Failed to initialize agent from password persistor (" << persistorPath << ")" << std::endl;
-        std::cerr << ISAgentSDKError::getErrorCodeString(nErrorCode) << std::endl;
-        exit(1);
-    }
-    agent.setMetadata("ionic-application-name", "ionic-encryption-tutorial");
-    agent.setMetadata("ionic-application-version", "1.0.0");
+	// initialize agent with password persistor
+	std::string persistorPath = std::string(std::getenv(HOMEVAR)) + "/.ionicsecurity/profiles.pw";
+	ISAgentDeviceProfilePersistorPassword persistor;
+	persistor.setFilePath(persistorPath);
+	persistor.setPassword(persistorPassword);
+	ISAgent agent;
+	nErrorCode = agent.initialize(persistor);
+	if (nErrorCode != ISAGENT_OK) {
+		std::cerr << "Failed to initialize agent from password persistor (" << persistorPath << ")" << std::endl;
+		std::cerr << ISAgentSDKError::getErrorCodeString(nErrorCode) << std::endl;
+		exit(1);
+	}
+	agent.setMetadata("ionic-application-name", "ionic-encryption-tutorial");
+	agent.setMetadata("ionic-application-version", "1.0.0");
 
-    /******************************************************************************
-     * SENDER
-     ******************************************************************************/
+	/******************************************************************************
+	 * SENDER
+	 ******************************************************************************/
 
-    std::string message = "this is a secret message!";
+	std::string message = "this is a secret message!";
 
-    // create single key
-    ISAgentCreateKeysRequest request;
-    ISAgentCreateKeysRequest::Key requestKey("refid1", 1);
-    request.getKeys().push_back(requestKey);
-    ISAgentCreateKeysResponse response;
-    nErrorCode = agent.createKeys(request, response);
-    if (nErrorCode != ISAGENT_OK) {
-        std::cerr << "Error creating key: " << ISAgentSDKError::getErrorCodeString(nErrorCode) << std::endl;
-        exit(1);
-    }
-    const ISAgentCreateKeysResponse::Key *createdKey = response.findKey("refid1");
+	// create single key
+	ISAgentCreateKeysRequest request;
+	ISAgentCreateKeysRequest::Key requestKey("refid1", 1);
+	request.getKeys().push_back(requestKey);
+	ISAgentCreateKeysResponse response;
+	nErrorCode = agent.createKeys(request, response);
+	if (nErrorCode != ISAGENT_OK) {
+		std::cerr << "Error creating key: " << ISAgentSDKError::getErrorCodeString(nErrorCode) << std::endl;
+		exit(1);
+	}
+	const ISAgentCreateKeysResponse::Key *createdKey = response.findKey("refid1");
 
-    // initialize aes cipher object
-    ISCryptoAesCtrCipher senderCipher(createdKey->getKey());
+	// initialize aes cipher object
+	ISCryptoAesCtrCipher senderCipher(createdKey->getKey());
 
-    // encrypt data
-    ISCryptoBytes ciphertext;
-    nErrorCode = senderCipher.encrypt(message, ciphertext);
-    if (nErrorCode != ISCRYPTO_OK) {
-        std::cerr << "Error: " << ISAgentSDKError::getErrorCodeString(nErrorCode) << std::endl;
-        exit(1);
-    }
+	// encrypt data
+	ISCryptoBytes ciphertext;
+	nErrorCode = senderCipher.encrypt(message, ciphertext);
+	if (nErrorCode != ISCRYPTO_OK) {
+		std::cerr << "Encryption Error: " << ISAgentSDKError::getErrorCodeString(nErrorCode) << std::endl;
+		exit(1);
+	}
 
-    ISCryptoHexString hexCiphertext;
-    hexCiphertext.fromBytes(ciphertext);
-    std::cout << "CREATED KEYID : " <<  createdKey->getId() << std::endl;
-    std::cout << "CIPHERTEXT    : " << hexCiphertext << std::endl;
+	// Encode the cipher text with a base64 encode.
+    std::string b64Ciphertext;
+	nErrorCode = ISCryptoUtils::binToBase64(ciphertext, b64Ciphertext, false, ciphertext.size(), true);
+	if (nErrorCode != ISCRYPTO_OK) {
+		std::cerr << "Bin to base64 Error: " << ISAgentSDKError::getErrorCodeString(nErrorCode) << std::endl;
+		exit(1);
+	}
+
+	// Put key ID and base64 encoded string into a payload.
+	std::map<std::string, std::string> payload;
+	payload["key_id"] = createdKey->getId();
+	payload["b64_ciphertext"] = b64Ciphertext;
+
+	// Encode into hex bytes.
+	ISCryptoHexString hexCiphertext;
+	hexCiphertext.fromBytes(ciphertext);
+
+	// Display Sender information.
+	std::cout << "CREATED KEYID : " << createdKey->getId() << std::endl;
+	std::cout << "CIPHERTEXT    : " << hexCiphertext << std::endl;
+
+	std::cout << std::endl << "PAYLOAD: ";
+	std::cout << "\"key_id\":" << "\"" << payload["key_id"] << "\", ";
+	std::cout << "\"b64_ciphertext\":" << "\"" << payload["b64_ciphertext"] << "\"" << std::endl;
+
 
     /******************************************************************************
      * RECEIVER
