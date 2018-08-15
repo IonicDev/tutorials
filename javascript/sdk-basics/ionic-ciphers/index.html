@@ -4,30 +4,9 @@
         <h1>Chunk Ciphers Tutorial</h1>
     </head>
     <body>
-        <script>
-          (function(){
-              var oldLog = console.log;
-              console.log = function (message) {
-                  var output_area = document.getElementById("output-area")
-                  output_area.innerHTML += message + '<br>'
-                  oldLog.apply(console, arguments);
-              };
-          })();
-        </script>
-
         <script src='https://dev-api.ionic.com/jssdk/latest/Libs/sdk.bundle.js'></script>
         <script src='ionicCiphers.js'></script>
-
-        <p id="output-area">
-        </p>
-
-        <br>
-        <h3 style="color:olive">Check the web console for output.</h3>
         <br>
         <h3 style="color:gray">Check the web console for output.</h3>
-        <br>
-        <h3 style="color:silver">Check the web console for output.</h3>
-        <br>
-        <h3 style="color:maroon">Check the web console for output.</h3>
     </body>
 </html>
