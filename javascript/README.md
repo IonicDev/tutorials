@@ -5,4 +5,3 @@ sample task and follow the steps below.  The Ionic JavaScript SDK is used in all
 Go to [Ionic Developer SDK Setup](https://dev.ionic.com/tutorials/getting-started/sdk-setup) 
 then click on the JavaScript icon and the desired browser icon.
 
-_Needs more verbiage_
