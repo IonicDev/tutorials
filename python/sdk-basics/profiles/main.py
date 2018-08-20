@@ -6,7 +6,7 @@ import os
 import sys
 import ionicsdk
 
-# initialize agent with sample plaintext profile persistor
+# initialize agent with sample password profile persistor
 try:
     persistorPassword = "ionic123"
     persistorPath = os.path.abspath("../../../sample-data/persistors/sample-persistor.pw")
@@ -20,6 +20,12 @@ except ionicsdk.exceptions.IonicException as e:
 if agent.hasanyprofiles() == False:
     print("No profiles found in specified profile persistor")
     sys.exit(1)
+
+# set app metadata
+agent.setmetadata({
+    "ionic-application-name": "Profiles Tutorial",
+    "ionic-application-version": "1.0.0"
+})
 
 # list all available profiles
 print("ALL PROFILES:")

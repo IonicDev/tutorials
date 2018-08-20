@@ -15,7 +15,7 @@ if (persistorPassword == None):
     print("[!] Please provide the persistor password as env variable: IONIC_PERSISTOR_PASSWORD")
     sys.exit(1)
 
-# initialize agent with sample plaintext profile persistor
+# initialize agent with sample password profile persistor
 try:
     persistorPath = os.path.expanduser("~/.ionicsecurity/profiles.pw")
     persistor = ionicsdk.DeviceProfilePersistorPasswordFile(persistorPath, persistorPassword)
@@ -36,6 +36,12 @@ try:
 except ionicsdk.exceptions.IonicException as e:
     print("Error creating a key: {0}".format(e.message))
     sys.exit(1)
+
+# set app metadata
+agent.setmetadata({
+    "ionic-application-name": "Encryption Tutorial",
+    "ionic-application-version": "1.0.0"
+})
 
 # initialize aes cipher
 sender_cipher = ionicsdk.AesCtrCipher(created_key.bytes)
