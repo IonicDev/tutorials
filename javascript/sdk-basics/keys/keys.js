@@ -74,7 +74,7 @@ const main = async () => {
   };
 
   // Merge new and existing mutable attributes.
-  mutableAttributes = Object.assign(mutableAttributes, newMutableAttributes);
+  Object.assign(mutableAttributes, newMutableAttributes);
 
   // Update the key.
   const updatedResponse = await agent.updateKeys({
