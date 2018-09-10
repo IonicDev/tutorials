@@ -9,100 +9,103 @@ const appData = {
   appId: 'ionic-js-samples',
   userId: 'developer',
   userAuth: 'password123',
-  enrollmentUrl: 'https://dev-enrollment.ionic.com/keyspace/HVzG/register'
-}
+  enrollmentUrl: 'https://dev-enrollment.ionic.com/keyspace/HVzG/register',
+};
 
 const main = async () => {
-
   // Initialize the Ionic agent.
-  const agent = new window.IonicSdk.ISAgent()
+  const agent = new window.IonicSdk.ISAgent();
   await agent.loadUser(appData).catch((error) => {
-    console.log('Error loading profile: ', error)
-  })
+    console.error('Error initializing ionic agent.');
+    throw error;
+  });
 
   // Define fixed attributes.
   const fixedAttributes = {
     'data-type': ['Finance'],
-    'region': ['North America']
-  }
+    'region': ['North America'],
+  };
 
   // Define mutable attributes.
-  const mutableAttributes = {
+  let mutableAttributes = {
     'classification': ['Restricted'],
-    'designated_owner': ['joe@hq.example.com']
-  }
+    'designated_owner': ['joe@hq.example.com'],
+  };
 
   // Create single key with fixed and mutable attributes.
   const response = await agent.createKeys({
     quantity: 1,
     attributes: fixedAttributes,
-    mutableAttributes: mutableAttributes
+    mutableAttributes: mutableAttributes,
   }).catch((error) => {
-    console.log(`Error Creating Key: ${error}`)
-  })
-  const createdKey = response.keys[0]
+    console.error('Error creating key.');
+    throw error;
+  });
+  const createdKey = response.keys[0];
 
   // Display new key.
-  console.log(`\nNEW KEY:`)
-  console.log(`KeyId    : ${createdKey.keyId}`)
-  console.log(`KeyBytes : ${createdKey.key}`)
-  console.log(`FixedAttributes   : ${JSON.stringify(createdKey.attributes, null, 0)}`)
-  console.log(`MutableAttributes : ${JSON.stringify(createdKey.mutableAttributes, null, 0)}`)
+  console.log(`\nNEW KEY:`);
+  console.log(`KeyId    : ${createdKey.keyId}`);
+  console.log(`KeyBytes : ${createdKey.key}`);
+  console.log(`FixedAttributes   : ${JSON.stringify(createdKey.attributes, null, 0)}`);
+  console.log(`MutableAttributes : ${JSON.stringify(createdKey.mutableAttributes, null, 0)}`);
 
   // Save the key ID.
-  keyId = createdKey.keyId
+  const keyId = createdKey.keyId;
 
   // Fetch the key by KeyId.
   const fetchedResponse = await agent.getKeys({keyIds: [keyId]}).catch((error) => {
-    console.log(`Error getting key: ${error}`)
-  })
+    console.error('Error getting key.');
+    throw error;
+  });
 
-  const fetchedKey = fetchedResponse.keys[0]
+  const fetchedKey = fetchedResponse.keys[0];
 
   // Display fetched key.
-  console.log(`\nFETCHED KEY:`)
-  console.log(`KeyId    : ${fetchedKey.keyId}`)
-  console.log(`KeyBytes : ${fetchedKey.key}`)
-  console.log(`FixedAttributes   : ${JSON.stringify(fetchedKey.attributes, null, 0)}`)
-  console.log(`MutableAttributes : ${JSON.stringify(fetchedKey.mutableAttributes, null, 0)}`)
+  console.log(`\nFETCHED KEY:`);
+  console.log(`KeyId    : ${fetchedKey.keyId}`);
+  console.log(`KeyBytes : ${fetchedKey.key}`);
+  console.log(`FixedAttributes   : ${JSON.stringify(fetchedKey.attributes, null, 0)}`);
+  console.log(`MutableAttributes : ${JSON.stringify(fetchedKey.mutableAttributes, null, 0)}`);
 
   // Define new mutable attributes.
   const newMutableAttributes = {
     'classification': ['Highly Restricted'],
-  }
+  };
 
   // Merge new and existing mutable attributes.
-  var updatedAttributes = mutableAttributes
-  for (var key in newMutableAttributes) {
-    value = newMutableAttributes[key]
-    updatedAttributes[key] = value
-  }
-  
+  mutableAttributes = Object.assign(mutableAttributes, newMutableAttributes);
+
   // Update the key.
   const updatedResponse = await agent.updateKeys({
     keyRequests: [{
       keyId: fetchedKey.keyId,
       force: true,
-      mutableAttributes: updatedAttributes
-    }]
+      mutableAttributes: mutableAttributes,
+    }],
   }).catch((error) => {
-    console.log(`Error updating key: ${error}`)
-  })
+    console.error('Error updating key.');
+    throw error;
+  });
+
+  const updatedKeyId = updatedResponse.keys[0].keyId;
 
   // To display the updated key, a fetch key is required.
-  const getUpdatedResponse = await agent.getKeys({keyIds: [keyId]}).catch((error) => {
-    console.log(`Error getting key: ${error}`)
-  })
+  const getUpdatedResponse = await agent.getKeys({
+    keyIds: [updatedKeyId],
+  }).catch((error) => {
+    console.error('Error fetching updated key.');
+    throw error;
+  });
 
-  var updatedKey = getUpdatedResponse.keys[0]
+  const updatedKey = getUpdatedResponse.keys[0];
 
   // Display updated key.
-  console.log(`\nUPDATED KEY:`)
-  console.log(`KeyId    : ${updatedKey.keyId}`)
-  console.log(`KeyBytes : ${updatedKey.key}`)
-  console.log(`FixedAttributes   : ${JSON.stringify(updatedKey.attributes, null, 0)}`)
-  console.log(`MutableAttributes : ${JSON.stringify(updatedKey.mutableAttributes, null, 0)}`)
+  console.log(`\nUPDATED KEY:`);
+  console.log(`KeyId    : ${updatedKey.keyId}`);
+  console.log(`KeyBytes : ${updatedKey.key}`);
+  console.log(`FixedAttributes   : ${JSON.stringify(updatedKey.attributes, null, 0)}`);
+  console.log(`MutableAttributes : ${JSON.stringify(updatedKey.mutableAttributes, null, 0)}`);
+};
 
-}
-
-main()
+main();
