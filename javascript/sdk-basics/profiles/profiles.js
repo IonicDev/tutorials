@@ -27,7 +27,7 @@ const main = async () => {
 
   // Verify there is at least one profile.
   if (profiles.length == 0) {
-    console.log('No profiles found in specified profile persistor')
+    console.log('No profiles found')
     return
   }
       
