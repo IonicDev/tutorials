@@ -15,8 +15,7 @@ public:
 	ISAgentCreateKeysResponse::Key m_keyOut;
 	ISAgentResponseBase m_errorResponse;
 
-	const std::string & getKeyIdOut() const
-	{
+	const std::string & getKeyIdOut() const {
 		return m_keyOut.getId();
 	}
 };
