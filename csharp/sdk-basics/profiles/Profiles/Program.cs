@@ -30,7 +30,7 @@ namespace Samples
             // Information can be found at '../../../../sample-data/peristors/README.md',
             // or 'github-tutorials/sample-data/peristors/README.md'.
             //
-            // The persistor path directory is 7 deep because the Visual Studio solution
+            // The persistor directory path is correct because the Visual Studio solution
             // executes from 'github-tutorials/csharp/sdk-basics/profiles/Profiles/bin/x64/Debug'.
             String persistorPath = "../../../../../../../sample-data/persistors/sample-persistor.pw";
             String persistorPassword = "ionic123";
