@@ -27,7 +27,11 @@ namespace Samples
         static void Main(string[] args)
         {
             // Set the persistors's path and password.
-            // Information can be found at ../../../../../../sample-data/perisstors/README.md.
+            // Information can be found at '../../../../sample-data/peristors/README.md',
+            // or 'github-tutorials/sample-data/peristors/README.md'.
+            //
+            // The persistor directory path is correct because the Visual Studio solution
+            // executes from 'github-tutorials/csharp/sdk-basics/profiles/Profiles/bin/x64/Debug'.
             String persistorPath = "../../../../../../../sample-data/persistors/sample-persistor.pw";
             String persistorPassword = "ionic123";
 
