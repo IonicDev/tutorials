@@ -6,6 +6,14 @@ import os
 import sys
 import ionicsdk
 
+source_dir = 'github-tutorials/python/sdk-basics/profiles'
+this_dir = os.getcwd()
+
+# run only from source directory
+if not this_dir.endswith(source_dir): 
+    print("[!] Please run this sample from inside " + source_dir)
+    sys.exit(1)
+
 # initialize agent with sample password profile persistor
 try:
     persistorPassword = "ionic123"
