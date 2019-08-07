@@ -56,7 +56,7 @@ except ionicsdk.exceptions.IonicException as e:
 # display new key
 print("\nNEW KEY:")
 print("KeyId        : " + created_key.id)
-print("KeyBytes     : " + binascii.hexlify(created_key.bytes))
+print("KeyBytes     : " + binascii.hexlify(created_key.bytes).decode("ascii"))
 print("FixedAttrs   : " + json.dumps(created_key.attributes))
 print("MutableAttrs : " + json.dumps(created_key.mutableAttributes))
 
@@ -70,7 +70,7 @@ except ionicsdk.exceptions.IonicException as e:
 # display fetched key
 print("\nFETCHED KEY:")
 print("KeyId        : " + fetched_key.id)
-print("KeyBytes     : " + binascii.hexlify(fetched_key.bytes))
+print("KeyBytes     : " + binascii.hexlify(fetched_key.bytes).decode("ascii"))
 print("FixedAttrs   : " + json.dumps(fetched_key.attributes))
 print("MutableAttrs : " + json.dumps(fetched_key.mutableAttributes))
 
@@ -102,6 +102,6 @@ except ionicsdk.exceptions.IonicException as e:
 # display updated key
 print("\nUPDATED KEY:")
 print("KeyId        : " + updated_key.id)
-print("KeyBytes     : " + binascii.hexlify(updated_key.bytes))
+print("KeyBytes     : " + binascii.hexlify(updated_key.bytes).decode("ascii"))
 print("FixedAttrs   : " + json.dumps(updated_key.attributes))
 print("MutableAttrs : " + json.dumps(updated_key.mutableAttributes))

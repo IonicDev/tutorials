@@ -30,7 +30,7 @@ except ionicsdk.exceptions.IonicException as e:
 ## SENDER 
 ###########################################################
 
-message = "this is a secret message!"
+message = b"this is a secret message!"
 
 # create new key
 try:
@@ -57,10 +57,11 @@ payload = {
     "b64_ciphertext": base64.b64encode(ciphertext)
 }
 
-print("CREATED KEYID : " + created_key.id)
-print("CIPHERTEXT    : " + binascii.hexlify(ciphertext))
-print("\nPAYLOAD       : " + json.dumps(payload))
-
+# CAUTION: b64_ciphertext is a byte object; beware of type errors
+print("CREATED KEYID      : " + created_key.id)
+print("CIPHERTEXT         : " + binascii.hexlify(ciphertext).decode("ascii"))
+print("PAYLOAD KEYID      : " + payload["keyId"])
+print("PAYLOAD B64 CRYPTO : " + payload["b64_ciphertext"].decode())
 
 ###########################################################
 ## RECEIVER
@@ -84,4 +85,4 @@ receiver_cipher = ionicsdk.AesCtrCipher(fetched_key.bytes)
 plaintext = receiver_cipher.decryptbytes(ciphertext)
 
 print("\nFETCHED KEYID : " + keyId)
-print("PLAINTEXT     : " + plaintext)
+print("PLAINTEXT     : " + plaintext.decode())
