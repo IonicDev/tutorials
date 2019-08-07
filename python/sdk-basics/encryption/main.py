@@ -12,15 +12,15 @@ import binascii
 import ionicsdk
 
 # read persistor password from environment variable
-persistorPassword = os.environ.get('IONIC_PERSISTOR_PASSWORD')
-if (persistorPassword == None):
+persistor_password = os.environ.get('IONIC_PERSISTOR_PASSWORD')
+if (persistor_password == None):
     print("[!] Please provide the persistor password as env variable: IONIC_PERSISTOR_PASSWORD")
     sys.exit(1)
 
 # initialize agent with sample password profile persistor
 try:
-    persistorPath = os.path.expanduser("~/.ionicsecurity/profiles.pw")
-    persistor = ionicsdk.DeviceProfilePersistorPasswordFile(persistorPath, persistorPassword)
+    persistor_path = os.path.expanduser("~/.ionicsecurity/profiles.pw")
+    persistor = ionicsdk.DeviceProfilePersistorPasswordFile(persistor_path, persistor_password)
     agent = ionicsdk.Agent(None, persistor)
 except ionicsdk.exceptions.IonicException as e:
     print("Error initializing agent: {0}".format(e.message))
@@ -69,11 +69,11 @@ print("PAYLOAD B64 CRYPTO : " + payload["b64_ciphertext"].decode())
 
 # extract ciphertext and keyId
 ciphertext = base64.b64decode(payload["b64_ciphertext"])
-keyId = payload["keyId"]
+key_id = payload["keyId"]
 
 # get key
 try:
-    fetched_key = agent.getkey(keyId)
+    fetched_key = agent.getkey(key_id)
 except ionicsdk.exceptions.IonicException as e:
     print("Error fetching a key: {0}".format(e.message))
     sys.exit(1)
@@ -84,5 +84,5 @@ receiver_cipher = ionicsdk.AesCtrCipher(fetched_key.bytes)
 # decrypt data
 plaintext = receiver_cipher.decryptbytes(ciphertext)
 
-print("\nFETCHED KEYID : " + keyId)
+print("\nFETCHED KEYID : " + key_id)
 print("PLAINTEXT     : " + plaintext.decode())
