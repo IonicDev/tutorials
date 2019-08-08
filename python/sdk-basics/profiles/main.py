@@ -2,6 +2,8 @@
 # By using this code, I agree to the Terms & Conditions (https://dev.ionic.com/use.html)
 # and the Privacy Policy (https://www.ionic.com/privacy-notice/).
 
+from __future__ import print_function
+
 import os
 import sys
 import ionicsdk
@@ -16,9 +18,9 @@ if not this_dir.endswith(source_dir):
 
 # initialize agent with sample password profile persistor
 try:
-    persistorPassword = "ionic123"
-    persistorPath = os.path.abspath("../../../sample-data/persistors/sample-persistor.pw")
-    persistor = ionicsdk.DeviceProfilePersistorPasswordFile(persistorPath, persistorPassword)
+    persistor_password = "ionic123"
+    persistor_path = os.path.abspath("../../../sample-data/persistors/sample-persistor.pw")
+    persistor = ionicsdk.DeviceProfilePersistorPasswordFile(persistor_path, persistor_password)
     agent = ionicsdk.Agent(None, persistor)
 except ionicsdk.exceptions.IonicException as e:
     print("Error initializing agent: {0}".format(e.message))
@@ -51,8 +53,8 @@ if agent.hasactiveprofile() == False:
     sys.exit(1)
 
 # display active profile
-activeProfile = agent.getactiveprofile()
-print("\nACTIVE PROFILE: " + activeProfile.deviceid)
+active_profile = agent.getactiveprofile()
+print("Active Profile: " + active_profile.deviceid)
 
 # change active profile
 new_profile_id = "EfGh.1.54sdf8-sdfj-5802-sd80-248vwqucv9s73"
@@ -64,5 +66,5 @@ except ionicsdk.exceptions.IonicException as e:
     sys.exit(1)
 
 # display new active profile
-activeProfile = agent.getactiveprofile()
-print("\nNEW ACTIVE PROFILE: " + activeProfile.deviceid)
+active_profile = agent.getactiveprofile()
+print("New Active Profile: " + active_profile.deviceid)
