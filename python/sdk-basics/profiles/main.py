@@ -54,7 +54,7 @@ if agent.hasactiveprofile() == False:
 
 # display active profile
 active_profile = agent.getactiveprofile()
-print("\nACTIVE PROFILE: " + active_profile.deviceid)
+print("Active Profile: " + active_profile.deviceid)
 
 # change active profile
 new_profile_id = "EfGh.1.54sdf8-sdfj-5802-sd80-248vwqucv9s73"
@@ -67,4 +67,4 @@ except ionicsdk.exceptions.IonicException as e:
 
 # display new active profile
 active_profile = agent.getactiveprofile()
-print("\nNEW ACTIVE PROFILE: " + active_profile.deviceid)
+print("New Active Profile: " + active_profile.deviceid)

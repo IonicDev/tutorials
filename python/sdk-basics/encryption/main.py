@@ -84,5 +84,5 @@ receiver_cipher = ionicsdk.AesCtrCipher(fetched_key.bytes)
 # decrypt data
 plaintext = receiver_cipher.decryptbytes(ciphertext)
 
-print("\nFETCHED KEYID : " + key_id)
-print("PLAINTEXT     : " + plaintext.decode())
+print("Fetched Key ID : " + key_id)
+print("Plaintext      : " + plaintext.decode())
