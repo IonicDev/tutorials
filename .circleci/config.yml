@@ -18,6 +18,7 @@ jobs:
             pip install ionicsdk
       - run:
           name: Install AWS CLI
+          command: |
             pip install awscli --upgrade --user # install AWS CLI
             pip install --upgrade --user awscli # upgrade to newest AWS CLI
       - run: 
