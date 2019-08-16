@@ -27,7 +27,7 @@ jobs:
             cat /etc/redhat-release
             python -V 
             pip show ionicsdk
-            aws --version
+            ~/.local/bin/aws --version
 #      - run:
 #          name: Before Python Testing
 #          command: |
