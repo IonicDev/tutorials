@@ -1,0 +1,40 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: centos:latest 
+    steps:
+      - checkout
+      - run:
+          name: Update OS and Install packages
+          command: |
+            yum -y update
+            yum -y install epel-release
+            yum -y install python-pip
+      - run:
+          name: Install Ionic SDK
+          command: |
+            pip install --upgrade pip
+            pip install ionicsdk
+            pip show ionicsdk
+      - run: 
+          name: Canary
+          command: |
+            cat /etc/redhat-release
+            python -V 
+      - run:
+          name: Before Python Testing
+          command: |
+            mkdir ../.ionicsecurity
+            cp sample-data/persistors/sample-persistor.pw ../.ionicsecurity/persistor.pw
+      - run:
+          name: profiles
+          command: |
+            cd python/sdk-basics/profiles
+            python main.py
+#      - run:
+#          name: keys
+#          command: |
+#            export IONIC_PERSISTOR_PASSWORD='ionic123'
+#            cd python/sdk-basics/keys
+#            python main.py
