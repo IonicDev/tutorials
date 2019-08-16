@@ -32,9 +32,9 @@ jobs:
           command: |
             cd python/sdk-basics/profiles
             python main.py
-#      - run:
-#          name: keys
-#          command: |
-#            export IONIC_PERSISTOR_PASSWORD='ionic123'
-#            cd python/sdk-basics/keys
-#            python main.py
+      - run:
+          name: keys
+          command: |
+            export IONIC_PERSISTOR_PASSWORD='ionic123'
+            cd python/sdk-basics/keys
+            python main.py
