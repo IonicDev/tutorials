@@ -38,5 +38,5 @@ jobs:
             export IONIC_PERSISTOR_PASSWORD='ionic123'
             cd python/sdk-basics/profiles
             python main.py
-            cd ../keys
+            cd ../ionic-ciphers
             python main.py
