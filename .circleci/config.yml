@@ -36,5 +36,7 @@ jobs:
           name: keys
           command: |
             export IONIC_PERSISTOR_PASSWORD='ionic123'
-            cd python/sdk-basics/keys
+            cd python/sdk-basics/profiles
+            python main.py
+            cd ../keys
             python main.py
