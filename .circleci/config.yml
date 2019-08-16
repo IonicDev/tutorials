@@ -16,27 +16,32 @@ jobs:
           command: |
             pip install --upgrade pip
             pip install ionicsdk
-            pip show ionicsdk
+      - run:
+          name: Install AWS CLI
+            pip install awscli --upgrade --user # install AWS CLI
+            pip install --upgrade --user awscli # upgrade to newest AWS CLI
       - run: 
           name: Canary
           command: |
             cat /etc/redhat-release
             python -V 
-      - run:
-          name: Before Python Testing
-          command: |
-            mkdir ../.ionicsecurity
-            cp sample-data/persistors/sample-persistor.pw ../.ionicsecurity/persistor.pw
+            pip show ionicsdk
+            aws --version
+#      - run:
+#          name: Before Python Testing
+#          command: |
+#            mkdir ../.ionicsecurity
+#            cp sample-data/persistors/sample-persistor.pw ../.ionicsecurity/persistor.pw
       - run:
           name: profiles
           command: |
             cd python/sdk-basics/profiles
             python main.py
-      - run:
-          name: keys
-          command: |
-            export IONIC_PERSISTOR_PASSWORD='ionic123'
-            cd python/sdk-basics/profiles
-            python main.py
-            cd ../ionic-ciphers
-            python main.py
+#      - run:
+#          name: keys
+#          command: |
+#            export IONIC_PERSISTOR_PASSWORD='ionic123'
+#            cd python/sdk-basics/profiles
+#            python main.py
+#            cd ../ionic-ciphers
+#            python main.py
