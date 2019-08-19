@@ -38,6 +38,7 @@ jobs:
           command: |
             cd python/sdk-basics/profiles
             python main.py
+            echo $IONIC_PROFILE
 #      - run:
 #          name: keys
 #          command: |
