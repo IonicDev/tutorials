@@ -29,7 +29,7 @@ jobs:
             pip show ionicsdk
             ~/.local/bin/aws --version
       - run:
-          name: Import Profile 
+          name: Import Profile
           command: |
             mkdir ../.ionicsecurity
             echo $IONIC_PROFILE | base64 --decode > ../.ionicsecurity.pw
@@ -38,11 +38,8 @@ jobs:
           command: |
             cd python/sdk-basics/profiles
             python main.py
-#      - run:
-#          name: keys
-#          command: |
-#            export IONIC_PERSISTOR_PASSWORD='ionic123'
-#            cd python/sdk-basics/profiles
-#            python main.py
-#            cd ../ionic-ciphers
-#            python main.py
+      - run:
+          name: ionic cipher
+          command: |
+            cd ../ionic-ciphers
+            python main.py
