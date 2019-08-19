@@ -32,7 +32,7 @@ jobs:
           name: Import Profile
           command: |
             mkdir ../.ionicsecurity
-            base64 --decode $IONIC_PROFILE > ../.ionicsecurity.pw
+            echo $IONIC_PROFILE | base64 --decode > ../.ionicsecurity.pw
       - run:
           name: profiles
           command: |
