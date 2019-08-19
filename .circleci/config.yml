@@ -16,23 +16,23 @@ jobs:
           command: |
             pip install --upgrade pip
             pip install ionicsdk
-      - run:
-          name: Install AWS CLI
-          command: |
-            pip install awscli --upgrade --user # install AWS CLI
-            pip install --upgrade --user awscli # upgrade to newest AWS CLI
+#      - run:
+#          name: Install AWS CLI
+#          command: |
+#            pip install awscli --upgrade --user # install AWS CLI
+#            pip install --upgrade --user awscli # upgrade to newest AWS CLI
       - run: 
           name: Canary
           command: |
             cat /etc/redhat-release
             python -V 
             pip show ionicsdk
-            ~/.local/bin/aws --version
+#            ~/.local/bin/aws --version
       - run:
           name: Import Profile
           command: |
             mkdir ../.ionicsecurity
-            echo $IONIC_PROFILE | base64 --decode > ../.ionicsecurity.pw
+            echo $IONIC_PROFILE | base64 --decode > ../.ionicsecurity/profile.pw
       - run:
           name: profiles
           command: |
