@@ -28,17 +28,16 @@ jobs:
             python -V 
             pip show ionicsdk
             ~/.local/bin/aws --version
-#      - run:
-#          name: Before Python Testing
-#          command: |
-#            mkdir ../.ionicsecurity
-#            cp sample-data/persistors/sample-persistor.pw ../.ionicsecurity/persistor.pw
+      - run:
+          name: Import Profile
+          command: |
+            mkdir ../.ionicsecurity
+            base64 --decode $IONIC_PROFILE > ../.ionicsecurity.pw
       - run:
           name: profiles
           command: |
             cd python/sdk-basics/profiles
             python main.py
-            echo $IONIC_PROFILE
 #      - run:
 #          name: keys
 #          command: |
