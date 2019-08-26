@@ -29,8 +29,8 @@ jobs:
             # After updates and installs, ID versions under test
             cat /etc/redhat-release
             python -V 
-            pip show ionicsdk
             robot --version
+            pip show ionicsdk
       - run:
           name: Import Profile
           command: |
