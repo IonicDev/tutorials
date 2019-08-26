@@ -33,7 +33,6 @@ jobs:
             # IONIC_PROFILE and IONIC_PERSISTOR_PASSWORD are Environmental Values store on the CircleCI Dashboard.
             mkdir ../.ionicsecurity
             echo $IONIC_PROFILE | base64 --decode > ../.ionicsecurity/profiles.pw
-            #cp sample-data/persistors/sample-persistor.pw ../.ionicsecurity/profiles.pw
       - run:
           name: Run agents Python Tutorial
           command: |
