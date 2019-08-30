@@ -2,11 +2,11 @@ This repository is used in conjunction with [Ionic Tutorials](https://dev.ionic.
 where there are explanations for each tutorial.  A learning order is suggested
 there.
 
-The tutorials are in C++, C#, Java, Javascript, and Python. Tutorials are first divided by
-langauges and then by complexity, sdk-basics, and sdk-advanced.  Not all tutorials are in
-all languages.
+The tutorials are in C++, C#, Java, Javascript, and Python. Tutorials are first organized by
+languages and then by complexity.  There are two tutorial levels: sdk-basics, and sdk-advanced.
+Not all tutorials are in all languages.
 
-The sdk-basics tutorials are:
+####SDK Tutorials - Basics
 
 * agents - Create and configure an Ionic agent.
 * encryption - AES encypt data using Ionic keys.
@@ -14,7 +14,7 @@ The sdk-basics tutorials are:
 * keys - Create, fetch, and update Ionic keys.
 * profiles - Load a profile from a persistor and select and active profile.
 
-The sdk-advanced tutorial is:
+####Advanced SDK Tutorials
 
 * raw-crypto-cypher - create a custom cipher using Ionic crypto library. (Only in C++)
 
