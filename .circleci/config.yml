@@ -19,12 +19,17 @@ jobs:
             yum -y install python-pip
             pip install --upgrade pip
             pip install ionicsdk
+      - run:
+          name: Install Robot Framework
+          command: |
+            pip install robotframework
       - run: 
           name: Canary
           command: |
             # After updates and installs, ID versions under test
             cat /etc/redhat-release
             python -V 
+            robot --version || true
             pip show ionicsdk
       - run:
           name: Import Profile
