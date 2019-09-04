@@ -10,10 +10,10 @@
 
 const std::string BulkEncrypt::LOGCHANNEL = "BulkEncrypt";
 
-// This implementation of ISAgentKeyServices takes another key services object
-// and pre-caches created keys in a single call.  This speeds up the process 
-// of encrypting large numbers of files by consolidating many network calls
-// into one.  All other key services operations are passed through to the 
+// This implementation of ISAgentKeyServices takes an existing key services
+// object and pre-caches created keys in a single call.  This speeds up the
+// process of encrypting large numbers of files by consolidating many network
+// calls into one.  All other key services operations are passed through to the 
 // provided key services object (such as an ISAgent).
 class BulkKeyServices : public ISAgentKeyServices
 {

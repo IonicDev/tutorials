@@ -28,7 +28,7 @@ int main(int argc, const char* argv[])
 	std::string persistorFile;
 	std::vector<std::string> filenames;
 
-	// There are many better tools for handling command lines that would be preferred
+	// There are many better tools for handling command lines arguments that would be preferred
 	// We're doing this by hand just to reduce dependencies for demonstration purposes
 	std::string usage = "Usage: bulkencrypt -e|-d [-p password persistorFile] [-l [N] logfile ] file outputdir \n";
 	usage += "    Options:\n";
