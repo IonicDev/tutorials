@@ -41,7 +41,7 @@ public:
 
 	virtual int createKey(const ISKeyAttributesMap & mapKeyAttributes, const ISKeyAttributesMap & mapMutableKeyAttributes, const ISMetadataMap & mapMetadata, ISAgentCreateKeysResponse & keysResponse)
 	{
-		if (m_lastKeyFetchResponse.getKeys().size() > 1)
+		if (!m_lastKeyFetchResponse.getKeys().empty())
 		{	// While we have keys in the cache, use them.  Attributes will be from the FillBulkKeyCache call
 			// For a general use key cache, we could check the attributes and only use from a cache correct ones
 			keysResponse.getKeys().push_back(m_lastKeyFetchResponse.getKeys().back());
@@ -121,6 +121,7 @@ int BulkEncrypt::encrypt(std::vector<std::string> filenames, std::string outputP
 {
 	int returnStatus = OK;
 	BulkKeyServices keyServe(m_services);
+	// We have a list of files, so fetch that number of keys at once and fill the cache of keys for use by the file cipher
 	keyServe.FillBulkKeyCache((int)filenames.size(), m_mapKeyAttributes, m_mapMutableKeyAttributes, m_mapMetadata);
 	std::shared_ptr<ISFileCryptoCipherBase> fileCipher;
 
@@ -193,6 +194,7 @@ int BulkEncrypt::decrypt(std::vector<std::string> filenames, std::string outputP
 
 		ISFileCryptoDecryptAttributes fileAttr;
 		fileAttr.setMetadata(m_mapMetadata);
+		// The file contains the key ID that is retrieved from the server if policy allows
 		int err = fileCipher.decrypt(filename, filenameOut, &fileAttr);
 		if (err != ISFILECRYPTO_OK)
 		{
