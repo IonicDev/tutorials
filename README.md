@@ -20,3 +20,5 @@ Not all tutorials are in all languages.
 * raw-crypto-cypher - Create a custom cipher using Ionic crypto library. (Only in C++)
 * bulk file encryption - Use extendible key services interface for large encrypt operations.  (Only in C++)
 
+## Error and Enhancement Reporting
+Since this repository is tied directly to Machina's DevPortal, pull requests will not be accepted.  Please use the Github Issue process to submit bug reports and enhancement requests.
