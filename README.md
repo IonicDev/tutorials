@@ -1,5 +1,5 @@
 # Machina Tutorials
-To run the tutorials in this repository, you need to have a Machina tenant. Obtaining a Machina tenant is done by clicking on *"Start For Free"* on the Machina Developer Portal (DevPortal). After your tenant has been created, you'll be directed to create your device credentials. Depending on the language chosen, you might have to install an SDK.  Once you have run *"Hello, World!"*, you're ready for the tutorials.
+To run the tutorials in this repository, you need to have a Machina tenant. Obtaining a Machina tenant is done by clicking on *"Start For Free"* on the [Machina Developers Portal](https://ionic.com/developers). After your tenant has been created, you'll be directed to create your device credentials. Depending on the language chosen, you might have to install an SDK.  Once you have run *"Hello, World!"*, you're ready for the tutorials.
 
 This repository is used in conjunction with [Machina Tutorials](https://dev.ionic.com/tutorials) where there are explanations for each tutorial.  A learning order is suggested there.
 
@@ -21,4 +21,4 @@ Not all tutorials are in all languages.
 * bulk file encryption - Use extendible key services interface for large encrypt operations.  (Only in C++)
 
 ## Error and Enhancement Reporting
-Since this repository is tied directly to Machina's DevPortal, pull requests will not be accepted.  Please use the Github Issue process to submit bug reports and enhancement requests.
+Since this repository is tied directly to Machina Developers Portal, pull requests will not be accepted.  Please use the Github Issue process to submit bug reports and enhancement requests.

@@ -2,11 +2,11 @@
 
 To run the Machina JavaScript Tutorials, you need to either:
 
-* create device credentials in Machina's Developer Portal (DevPortal)
+* create device credentials in [Machina Developers Portal](https://ionic.com/developers)
 * call `ISAgent.enrollUser()` with the correct credentials 
 
 ## Create Device Credentials
-Before creating device credentials, you will need a Machina tenant.  You can create a Machina tenant from our [DevPortal](https://dev.ionic.com) by clicking on the *"Start For Free*" link. After you have created the device credentials and done the "[Hello, World!](https://dev.ionic.com/getting-started/hello-world)" example, you can run the Javascript tutorials in the DevPortal.  The following Javascript tutorials are available:
+Before creating device credentials, you will need a Machina tenant.  You can create a Machina tenant from our [Machina Developers Portal](https://dev.ionic.com) by clicking on the *"Start For Free*" link. After you have created the device credentials and done the "[Hello, World!](https://dev.ionic.com/getting-started/hello-world)" example, you can run the Javascript tutorials in the DevPortal.  The following Javascript tutorials are currently available:
 
 * [Agents](https://dev.ionic.com/tutorials/sdk-basics/agents?language=javascript)
 * [Keys](https://dev.ionic.com/tutorials/sdk-basics/keys?language=javascript)
@@ -15,8 +15,8 @@ Before creating device credentials, you will need a Machina tenant.  You can cre
 ***Note:*** Make sure you the Javascript language square is clicked.
 
 ## Call agent.enrollUser()
-If you already have a Machina tenant you can call [ISAgent.enrollUser()](https://api.ionic.com/jssdk/latest/Docs/ISAgent.html#enrollUser). There is a code example in the Machina Javascript SDK documentation, [hellowWorld_index.js Tutorial](https://dev.ionic.com/sdk_docs/ionic_platform_sdk/javascript/version_2.2.0/tutorial-helloWorld_index.js.html). There is also another code example, `enrollDevice()` in [Ionic Github Samples](https://github.com/IonicDev/samples/tree/master/javascript/enroll-device).
-
+If you already have a Machina tenant you can call [ISAgent.enrollUser()](https://api.ionic.com/jssdk/latest/Docs/ISAgent.html#enrollUser). There is a code example, `enrollDevice()` in [Ionic Github Samples](https://github.com/IonicDev/samples/tree/master/javascript/enroll-device).
+There is another code example in the Machina Javascript SDK documentation, [hellowWorld_index.js Tutorial](https://dev.ionic.com/sdk_docs/ionic_platform_sdk/javascript/version_2.2.0/tutorial-helloWorld_index.js.html). 
 The agent configuration or `appData` needs to be set for your tenant.  Below is an example of `appData` for enrollment used by `ISAgent.enrollUser()`.
 
 ```
