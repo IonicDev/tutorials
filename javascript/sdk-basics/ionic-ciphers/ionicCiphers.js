@@ -1,44 +1,63 @@
 /*
- * (c) 2018 Ionic Security Inc.
+ * (c) 2018-2020 Ionic Security Inc.
  * By using this code, I agree to the Terms & Conditions (https://dev.ionic.com/use.html)
  * and the Privacy Policy (https://www.ionic.com/privacy-notice/).
  */
+    
+/*  
+ * WARNING *
+ * Calling agent.enrollUser() successfully is a pre-requisite before using this code.
+ * This is done when you enrolled your device after signing up for a tenant.
+ */
 
+// AppData for all Javascript samples: appId, userId, and userAuth needs to be the same
+// as the appData that was used for enrollment.
 const appData = {
   appId: 'ionic-js-samples',
   userId: 'developer',
   userAuth: 'password123',
-  enrollmentUrl: 'https://preview-enrollment.ionic.com/keyspace/HVzG/register'
-}
+  metadata: {
+    'ionic-application-name': 'Javascript Chuck Ciphers Tutorial',
+    'ionic-application-version': '1.3.0'
+  }
+};
 
 const main = async () => {
 
-  // initialize agent
-  const agent = new window.IonicSdk.ISAgent()
-  await agent.loadUser(appData).catch((error) => {
-    console.log('Error loading profile: ', error)
-  })
+  // Initialize the Machina agent.
+  try {
+    const resp = await new window.IonicSdk.ISAgent(appData);
+    const agent = resp.agent;
 
-  /**********************************************************
-   ** SENDER
-   **********************************************************/
-  const message = 'This is a secret message!'
+    /**********************************************************
+     ** SENDER
+     **********************************************************/
+    const message = 'This is a secret message!';
 
-  // encrypt data
-  const encryptResponse = await agent.encryptStringChunkCipher({stringData: message})
-  const ciphertext = encryptResponse.stringChunk
+    console.log('');
+    console.log('Plain text:     ' + message);
+  
+    // encrypt data
+    const encryptResponse = await agent.encryptStringChunkCipher({stringData: message});
+    const cipherText = encryptResponse.stringChunk;
+  
+    console.log('Sending Encrypted Text: ' + cipherText);
+  
+    /**********************************************************
+     ** RECEIVER
+     **********************************************************/
+  
+    // decrypt data
+    const decryptResponse = await agent.decryptStringChunkCipher({stringData: cipherText});
+    const decryptedText = decryptResponse.stringChunk;
+  
+    console.log('-----------------------------------------------------------------------------------------------------');
+    console.log('Receiving Encrypted Text: ' + cipherText);
+    console.log('Decrypted Text: ' + decryptedText);
 
-  console.log('CIPHERTEXT : ' + ciphertext)
-
-  /**********************************************************
-   ** RECEIVER
-   **********************************************************/
-
-  // decrypt data
-  const decryptResponse = await agent.decryptStringChunkCipher({stringData: ciphertext})
-  const plaintext = decryptResponse.stringChunk
-
-  console.log('\nPLAINTEXT  : ' + plaintext)
+  } catch (error) {
+    console.error('Error initializing ionic agent:' + error);
+  };
 }
 
-main()
+main();

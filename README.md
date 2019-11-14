@@ -1,22 +1,24 @@
-This repository is used in conjunction with [Ionic Tutorials](https://dev.ionic.com/tutorials) 
-where there are explanations for each tutorial.  A learning order is suggested
-there.
+# Machina Tutorials
+To run the tutorials in this repository, you need to have a Machina tenant. Obtaining a Machina tenant is done by clicking on *"Start For Free"* on the [Machina Developers Portal](https://ionic.com/developers). After your tenant has been created, you'll be directed to create your device credentials. Depending on the language chosen, you might have to install an SDK.  Once you have run *"Hello, World!"*, you're ready for the tutorials.
+
+This repository is used in conjunction with [Machina Tutorials](https://dev.ionic.com/tutorials) where there are explanations for each tutorial.  A learning order is suggested there.
 
 The tutorials are in C++, C#, Java, Javascript, and Python. Tutorials are first organized by
 languages and then by complexity.  There are two tutorial levels: sdk-basics, and sdk-advanced.
-Not all tutorials are in all languages.
+Not all tutorials are available all languages.
 
-####SDK Tutorials - Basics
+## SDK Tutorials - Basics
 
-* agents - Create and configure an Ionic agent.
-* encryption - AES encypt data using Ionic keys.
-* ionic-ciphers - Encypt and format data using Ionic-crypto ciphers.
-* keys - Create, fetch, and update Ionic keys.
-* profiles - Load a profile from a persistor and select and active profile.
+* Agents - Configure and initialize the Agent class in order to communicate with Machina.
+* Encryption - AES encypt data using Machina keys.
+* Ionic-ciphers - Encypt and format data using Machina crypto ciphers.
+* Keys - Create, fetch, and update Machina keys.
+* Profiles - Load a profile from a persistor and select an active profile.
 
-####Advanced SDK Tutorials
+## Advanced SDK Tutorials
 
-* raw-crypto-cypher - create a custom cipher using Ionic crypto library. (Only in C++)
+* Raw Crypto Cypher - Create a custom cipher using Machina crypto library. (Only in C++)
+* Bulk File Encryption - Use extendible key services interface for large encrypt operations.  (Only in C++)
 
-To start using the tutorials, please go to [Ionic Developers](http://ionic.com/developers)
-for more information.
+## Error and Enhancement Reporting
+Since this repository is tied directly to Machina Developers Portal, we do not take pull requests for this repository. However, you may open an issue to provide feedback for corrections, fixes and suggestions for enhancement.

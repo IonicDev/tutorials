@@ -1,3 +1,9 @@
+/*
+ * (c) 2018-2020 Ionic Security Inc.
+ * By using this code, I agree to the Terms & Conditions (https://dev.ionic.com/use.html)
+ * and the Privacy Policy (https://www.ionic.com/privacy-notice/).
+ */
+
 // This code sample demonstrates an Ionic SDK bulk file encryption use case.
 // Multiple files may be specified by using a wildcard GLOB.
 // The Ionic SDK must be configured to be available to the compiler.
