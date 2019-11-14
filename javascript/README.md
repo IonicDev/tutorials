@@ -16,7 +16,7 @@ Before creating device credentials, you will need a Machina instance.  You can c
 
 ## Call agent.enrollUser()
 If you already have a Machina instance you can call [ISAgent.enrollUser()](https://api.ionic.com/jssdk/latest/Docs/ISAgent.html#enrollUser). There is a code example, `enrollDevice()` in [Ionic Github Samples](https://github.com/IonicDev/samples/tree/master/javascript/enroll-device).
-There is another code example in the Javascript SDK documentation, [hellowWorld_index.js Tutorial](https://dev.ionic.com/sdk_docs/ionic_platform_sdk/javascript/version_2.2.0/tutorial-helloWorld_index.js.html). 
+There is another code example in the Javascript SDK documentation, [hellowWorld_index.js Tutorial](https://api.ionic.com/jssdk/latest/Docs/tutorial-helloWorld_index.js.html). 
 The agent configuration or `appData` needs to be set for your instance.  Below is an example of `appData` for enrollment used by `ISAgent.enrollUser()`.
 
 ```
@@ -37,3 +37,6 @@ const appData = {
 There is an [`index.html`](https://github.com/IonicDev/tutorials/blob/master/javascript/index.html) that conveniently points to all the Javascript tutorials.  You can use it with a local webserver, for example, [http-server](https://www.npmjs.com/package/http-server).
 
 There is a Javascript file, `consoleReroute.js` that tees `console.log()` to the Javascript console and to the an output area to be displayed in the browser.  Calling `console.log('') initializes the output area with the a fixed font and grey background.
+
+## Documentation
+The Javascript SDK documentation is located [here](https://api.ionic.com/jssdk/latest/Docs/index.html).
