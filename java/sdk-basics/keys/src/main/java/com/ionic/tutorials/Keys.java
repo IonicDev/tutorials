@@ -76,7 +76,8 @@ public class Keys
         // get key by keyId
         GetKeysResponse.Key fetchedKey = null;
         try {
-            fetchedKey = agent.getKey(createdKey.getId()).getKeys().get(0);
+            GetKeysResponse keyResp = agent.getKey(createdKey.getId());
+            fetchedKey = keyResp.getKeys().get(0);
         } catch(IonicException e) {
             System.out.println(e.getMessage());
             System.exit(1);
