@@ -12,6 +12,9 @@ if [[ ! -f "$PERSISTOR_PATH" ]]; then
     exit 1
 fi
 
+# exit when any command fails
+set -e
+
 FixedAttrs="'data-type:Finance,region:North-America'"
 MutableAttrs="'classification:Restricted,designated-owner:joe@hq.example.com'"
 
@@ -24,11 +27,11 @@ echo "NEW KEY:"
 echo ""
 echo $JSON
 
+# TODO: We could check in the binary for a bash json parser (i.e 'jq') and it instead of requiring python
+# TODO: We could also use an external id - but that would have to be explained
 # Parse the 'keyId' from the new key response (note: requires python)
 KEY_ID=$(echo $JSON | \
     python -c 'import json,sys;obj=json.load(sys.stdin);print obj["keys"][0]["keyId"]';)
-
-echo "'"$KEY_ID"'"
 
 # Get key by keyId
 JSON=$(ionicsdk --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
