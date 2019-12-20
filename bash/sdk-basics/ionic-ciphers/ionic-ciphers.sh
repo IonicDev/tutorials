@@ -18,7 +18,7 @@ fi
 set -e
 
 # Set the current applications name and version
-ClinetMetadata="ionic-application-name:Keys CLI Tutorial,ionic-application-version:1.0.0"
+ClinetMetadata="ionic-application-name:Ciphers CLI Tutorial,ionic-application-version:1.0.0"
 
 # Sample message to encrypt
 MESSAGE='this is a secret message!'
