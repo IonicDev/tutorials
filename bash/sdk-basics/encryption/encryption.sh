@@ -17,6 +17,9 @@ fi
 # Configure this script to exit when any command fails
 set -e
 
+# Set the current applications name and version
+ClinetMetadata="ionic-application-name:Encryption CLI Tutorial,ionic-application-version:1.0.0"
+
 # Sample message to encrypt
 MESSAGE='this is a secret message!'
 echo "ORIGINAL TEXT      : ${MESSAGE}"
@@ -24,7 +27,7 @@ echo "ORIGINAL TEXT      : ${MESSAGE}"
 # Create new key and push it to the internal stack and then stores it in the key vault
 JSON=$(ionicsdk --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
     vault load \
-    key create --push \
+    key create --push --metas "${ClinetMetadata}"\
     vault store )
 
 # TODO: We could check in the binary for a bash json parser (i.e 'jq') and it instead of requiring python
@@ -39,7 +42,7 @@ echo "CREATED KEYID      : ${KEY_ID}"
 ENCRYPTED_MESSAGE=$(ionicsdk --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
     vault load \
     vault fetch --keyids ${KEY_ID} --push \
-    chunk encrypt -s "${MESSAGE}" --pull)
+    chunk encrypt -s "${MESSAGE}" --pull --metas "${ClinetMetadata}")
 
 
 echo "CIPHER TEXT        : ${ENCRYPTED_MESSAGE}"
@@ -48,6 +51,6 @@ echo "CIPHER TEXT        : ${ENCRYPTED_MESSAGE}"
 MESSAGE=$(ionicsdk --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
     vault load \
     vault fetch --keyids ${KEY_ID} --push \
-    chunk decrypt --vault -s "${ENCRYPTED_MESSAGE}")
+    chunk decrypt --vault -s "${ENCRYPTED_MESSAGE}" --metas "${ClinetMetadata}")
 
 echo "PLAIN TEXT         : ${MESSAGE}"
