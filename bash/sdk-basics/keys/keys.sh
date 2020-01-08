@@ -43,7 +43,7 @@ KEY_ID=$(echo $JSON | \
 JSON=$(ionicsdk --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
     key fetch -i ${KEY_ID} --metas "${ClinetMetadata}")
 
-# Display new key
+# Display fetched key
 echo "FETCH KEY:"
 echo ""
 echo $JSON
