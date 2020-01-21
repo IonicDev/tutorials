@@ -14,7 +14,7 @@ if (-not (Test-Path -path $PERSISTOR_PATH)) {
 }
 
 <# Set the current applications name and version #>
-$ClinetMetadata="ionic-application-name:Keys CLI Tutorial,ionic-application-version:1.0.0"
+$ClientMetadata="ionic-application-name:Keys CLI Tutorial,ionic-application-version:1.0.0"
 
 <# Set the key attributes #>
 $FixedAttrs="data-type:Finance,region:North-America"
@@ -22,7 +22,7 @@ $MutableAttrs="classification:Restricted,designated-owner:joe@hq.example.com"
 
 <# Create new key with fixed and mutable attributes #>
 $JSON=$(ionicsdk --devicetype password --devicefile "${PERSISTOR_PATH}" --devicepw ${IONIC_PERSISTOR_PASSWORD} `
-  key create --attrs "${FixedAttrs}" --mattrs "${MutableAttrs}" --metas "${ClinetMetadata}")
+  key create --attrs "${FixedAttrs}" --mattrs "${MutableAttrs}" --metas "${ClientMetadata}")
 
 <# Parse the 'keyId' from the new key response #>
 $JSON_OBJECT=($JSON | ConvertFrom-Json)
@@ -34,7 +34,7 @@ echo $JSON_OBJECT.keys[0]
 
 <# Get key by 'keyId' #>
 $JSON=$(ionicsdk --devicetype password --devicefile "${PERSISTOR_PATH}" --devicepw ${IONIC_PERSISTOR_PASSWORD} `
-  key fetch -i "${KEY_ID}" --metas "${ClinetMetadata}")
+  key fetch -i "${KEY_ID}" --metas "${ClientMetadata}")
 $JSON_OBJECT=($JSON | ConvertFrom-Json)
 
 <# Display fetched key #>
@@ -46,11 +46,10 @@ $UPDATED_MUTABLE_ATTRS="'classification:Highly-Restricted'"
 
 # Update the 'classification' attribute to 'Highly-Restricted'
 $JSON=$(ionicsdk --devicetype password --devicefile "${PERSISTOR_PATH}" --devicepw ${IONIC_PERSISTOR_PASSWORD} `
-  key modify --mattrs "${UPDATED_MUTABLE_ATTRS}" -i "${KEY_ID}" --metas "${ClinetMetadata}")
+  key modify --mattrs "${UPDATED_MUTABLE_ATTRS}" -i "${KEY_ID}" --metas "${ClientMetadata}")
 $JSON_OBJECT=($JSON | ConvertFrom-Json)
 
 <# Display updated key #>
 echo "UPDATED KEY:"
 echo ""
 echo $JSON_OBJECT.keys[0]
-
