@@ -33,9 +33,8 @@ echo "NEW KEY:"
 echo ""
 echo $JSON
 
-# Parse the 'keyId' from the new key response (note: requires python)
-KEY_ID=$(echo $JSON | \
-    python -c 'import json,sys;obj=json.load(sys.stdin);print obj["keys"][0]["keyId"]';)
+# Parse the 'keyId' from the new key response
+KEY_ID=$(echo $JSON | awk 'BEGIN {RS=","}; /keyId/ {print $3}' | tr -d '"')
 
 # Get key by keyId
 JSON=$(ionicsdk --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
