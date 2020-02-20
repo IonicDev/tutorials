@@ -18,7 +18,7 @@ fi
 set -e
 
 # Set the current applications name and version
-ClientMetadata="ionic-application-name:CircleCI-Demo,ionic-application-version:1.0.0"
+ClientMetadata="ionic-application-name:Source-Control-Demo,ionic-application-version:1.0.0"
 
 # Create an array containing each API key that needs to be protected
 array=( $(cat ./google-services.json | jq '(.client[].api_key[].current_key)') )
