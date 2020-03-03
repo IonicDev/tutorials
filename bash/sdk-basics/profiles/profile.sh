@@ -30,12 +30,12 @@ echo "ACTIVE PROFILE:" $ACTIVE_DEVICE_ID
 echo ''
 
 # Set the active profile
-echo "SETTING NEW ACTIVE PROFILE: ABcd.4.9f521b6f-ac9e-48bc-a54a-2f1730288bf"
+echo "SETTING NEW ACTIVE PROFILE: EfGh.1.54sdf8-sdfj-5802-sd80-248vwqucv9s73"
 machina \
   --devicetype password \
   --devicefile ${PERSISTOR_PATH} \
   --devicepw ${PERSISTOR_PASSWORD} \
-  profile set -d 'ABcd.4.9f521b6f-ac9e-48bc-a54a-2f1730288bf'
+  profile set --deviceid 'EfGh.1.54sdf8-sdfj-5802-sd80-248vwqucv9s73'
 
 # Once again, store the output of the profile show command in a variable
 NEW_ACTIVE_PROFILE=$(machina \
