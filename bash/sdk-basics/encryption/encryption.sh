@@ -25,9 +25,12 @@ MESSAGE='this is a secret message!'
 echo "ORIGINAL TEXT      : ${MESSAGE}"
 
 # Create new key, push it to the internal stack and store it in the key vault
-JSON=$(ionicsdk --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
+JSON=$(machina \
+  --devicetype password \
+  --devicefile ${PERSISTOR_PATH} \
+  --devicepw ${IONIC_PERSISTOR_PASSWORD} \
     vault load \
-    key create --push --metas "${ClientMetadata}"\
+    key create --push --metas "${ClientMetadata}" \
     vault store )
 
 # Parse the 'keyId' from the new key response
@@ -36,10 +39,13 @@ KEY_ID=$(echo $JSON | awk 'BEGIN {RS=","}; /keyId/ {print $3}' | tr -d '"')
 echo "CREATED KEYID      : ${KEY_ID}"
 
 # Fetch the key from the key vault and use it to encrypt a string
-ENCRYPTED_MESSAGE=$(ionicsdk --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
+ENCRYPTED_MESSAGE=$(machina \
+  --devicetype password \
+  --devicefile ${PERSISTOR_PATH} \
+  --devicepw ${IONIC_PERSISTOR_PASSWORD} \
     vault load \
     vault fetch --keyids ${KEY_ID} --push \
-    chunk encrypt -s "${MESSAGE}" --pull --metas "${ClientMetadata}")
+    chunk encrypt --instr "${MESSAGE}" --pull --metas "${ClientMetadata}")
 
 
 echo "CIPHER TEXT        : ${ENCRYPTED_MESSAGE}"
