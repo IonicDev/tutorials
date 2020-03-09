@@ -47,11 +47,13 @@ ENCRYPTED_MESSAGE=$(machina \
     vault fetch --keyids ${KEY_ID} --push \
     chunk encrypt --instr "${MESSAGE}" --pull --metas "${ClientMetadata}")
 
-
 echo "CIPHER TEXT        : ${ENCRYPTED_MESSAGE}"
 
 # Fetch the key from the key vault and use it to decrypt a string
-MESSAGE=$(ionicsdk --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
+MESSAGE=$(machina \
+  --devicetype password \
+  --devicefile ${PERSISTOR_PATH} \
+  --devicepw ${IONIC_PERSISTOR_PASSWORD} \
     vault load \
     vault fetch --keyids ${KEY_ID} --push \
     chunk decrypt --vault -s "${ENCRYPTED_MESSAGE}" --metas "${ClientMetadata}")
