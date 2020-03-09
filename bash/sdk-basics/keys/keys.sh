@@ -25,7 +25,10 @@ FixedAttrs="'data-type:Finance,region:North-America'"
 MutableAttrs="'classification:Restricted,designated-owner:joe@hq.example.com'"
 
 # Create new key with fixed and mutable attributes
-JSON=$(ionicsdk --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
+JSON=$(machina \
+  --devicetype password \
+  --devicefile ${PERSISTOR_PATH} \
+  --devicepw ${IONIC_PERSISTOR_PASSWORD} \
     key create --attrs ${FixedAttrs} --mattrs ${MutableAttrs} --metas "${ClientMetadata}")
 
 # Display new key
@@ -37,8 +40,11 @@ echo $JSON
 KEY_ID=$(echo $JSON | awk 'BEGIN {RS=","}; /keyId/ {print $3}' | tr -d '"')
 
 # Get key by keyId
-JSON=$(ionicsdk --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
-    key fetch -i ${KEY_ID} --metas "${ClientMetadata}")
+JSON=$(machina \
+  --devicetype password \
+  --devicefile ${PERSISTOR_PATH} \
+  --devicepw ${IONIC_PERSISTOR_PASSWORD} \
+    key fetch --keyids ${KEY_ID} --metas "${ClientMetadata}")
 
 # Display fetched key
 echo "FETCH KEY:"
@@ -48,8 +54,11 @@ echo $JSON
 UpdatedMutableAttrs="'classification:Highly-Restricted'"
 
 # Update the 'classification' attribute to 'Highly-Restricted'
-JSON=$(ionicsdk --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
-    key modify  --mattrs ${UpdatedMutableAttrs} -i ${KEY_ID} --metas "${ClientMetadata}")
+JSON=$(machina \
+  --devicetype password \
+  --devicefile ${PERSISTOR_PATH} \
+  --devicepw ${IONIC_PERSISTOR_PASSWORD} \
+    key modify --mattrs ${UpdatedMutableAttrs} --keyids ${KEY_ID} --metas "${ClientMetadata}")
 
 # Display updated key
 echo "UPDATED KEY:"
