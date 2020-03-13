@@ -1,3 +1,9 @@
+<# (c) 2018-2020 Ionic Security Inc. #>
+<# By using this code, I agree to the Terms & Conditions (https://dev.ionic.com/use.html) #>
+<# and the Privacy Policy (https://www.ionic.com/privacy-notice/). #>
+
+<# Use command ./profiles.ps1 #>
+
 <# Confirm that the sample profile persistor file exists #>
 $PERSISTOR_PATH="../../../sample-data/persistors/sample-persistor.pw"
 $PERSISTOR_PASSWORD="ionic123"
