@@ -1,5 +1,10 @@
- #! /usr/bin/env bash
-# comment: use command ./profile.sh
+#! /usr/bin/env bash
+
+# (c) 2018-2020 Ionic Security Inc.
+# By using this code, I agree to the Terms & Conditions (https://dev.ionic.com/use.html)
+# and the Privacy Policy (https://www.ionic.com/privacy-notice/).
+
+# comment: use command ./checkin.sh
 
 # Confirm that the profile persistor password is set as an environment variable
 if [[ -z "${IONIC_PERSISTOR_PASSWORD}" ]]; then
