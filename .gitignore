@@ -1,7 +1,11 @@
+#MacOS
+**/.DS_Store
+
 # Java
 *.class
 *.jar
 target/
+.settings
 
 # VS
 .vs/

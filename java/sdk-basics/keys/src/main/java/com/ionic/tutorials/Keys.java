@@ -1,5 +1,5 @@
 /*
- * (c) 2018 Ionic Security Inc.
+ * (c) 2018-2020 Ionic Security Inc.
  * By using this code, I agree to the Terms & Conditions (https://dev.ionic.com/use.html)
  * and the Privacy Policy (https://www.ionic.com/privacy-notice/).
  * 
@@ -76,7 +76,8 @@ public class Keys
         // get key by keyId
         GetKeysResponse.Key fetchedKey = null;
         try {
-            fetchedKey = agent.getKey(createdKey.getId()).getKeys().get(0);
+            GetKeysResponse keyResp = agent.getKey(createdKey.getId());
+            fetchedKey = keyResp.getKeys().get(0);
         } catch(IonicException e) {
             System.out.println(e.getMessage());
             System.exit(1);
