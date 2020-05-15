@@ -27,7 +27,10 @@ ClientMetadata="ionic-application-name:Expire Email Tutorial,ionic-application-v
 
 SUBJECT="Machina%20Protected%20Message"
 
+# Read the text from the clipboard
 INCOMING_MESSAGE=$(pbpaste)
+
+# Check if the clipboard text is a Machina protected string and parse the response
 INCOMING_MESSAGE_INFO=$(machina \
   --devicetype password \
   --devicefile ${PERSISTOR_PATH} \
@@ -58,7 +61,7 @@ fi
 # Read message input
 read MESSAGE
 
-# Prompt for an expire duraton
+# Prompt for an expire duration
 echo "Expire timeout (mins)  : "
 
 # Read expire duration
