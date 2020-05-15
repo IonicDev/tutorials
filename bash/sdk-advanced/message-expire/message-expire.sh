@@ -61,7 +61,7 @@ fi
 # Read message input
 read MESSAGE
 
-# Prompt for an expire duraton
+# Prompt for an expire duration
 echo "Expire timeout (mins)  : "
 
 # Read expire duration
