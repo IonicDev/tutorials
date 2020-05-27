@@ -61,13 +61,6 @@
             ReferencedContainer = "container:profiles.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "IONIC_SDK_PATH"
-            value = "/Users/nvautier/Development/Ionic/Production/Sdks/MachinaToolsSDKObjC-1.8.0-OSX/"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
