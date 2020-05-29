@@ -1,9 +1,9 @@
 //
 //  main.m
-//  profiles
+//  keys
 //
-//  Created by Nicolas Vautier on 5/22/20.
-//  Copyright © 2020 Nicolas Vautier. All rights reserved.
+//  Copyright © 2020 Ionic Security Inc. All rights reserved.
+//  By using this code, I agree to the Terms & Conditions (https://dev.ionic.com/use.html) and the Privacy Policy (https://www.ionic.com/privacy-notice/).
 //
 
 #import <Foundation/Foundation.h>
@@ -46,7 +46,7 @@ int main(int argc, const char * argv[]) {
         }
         
         // set app metadata
-        [agent setMetadataValue:@"ionic-application-name" forField:@"ionic-agents-tutorial"];
+        [agent setMetadataValue:@"ionic-application-name" forField:@"ionic-keys-objc-tutorial"];
         [agent setMetadataValue:@"ionic-application-version" forField:@"1.0.0"];
         
         // define fixed attributes
@@ -78,9 +78,14 @@ int main(int argc, const char * argv[]) {
         // display new key
         IonicAgentCreateKeysResponseKey* createKeyResponse = [response findKeyUsingRefId:@"refid1"];
         NSLog(@"NEW KEY :");
-        NSLog(@"");
         NSLog(@"KeyId    : %@", [createKeyResponse id]);
         NSLog(@"KeyBytes : %@", [createKeyResponse key]);
+        NSLog(@"FixedAttrs : ");
+        for (NSObject* each in [[createKeyResponse mutableAttributes] allKeys])
+            NSLog(@"  %@ : %@", each, [[[createKeyResponse mutableAttributes] valueForKey:(NSString*)each] firstObject]);
+        NSLog(@"MutableAttrs : ");
+        for (NSObject* each in [[createKeyResponse mutableAttributes] allKeys])
+            NSLog(@"  %@ : %@", each, [[[createKeyResponse mutableAttributes] valueForKey:(NSString*)each] firstObject]);
         NSLog(@"");
         
         // get key by KeyId
@@ -92,7 +97,7 @@ int main(int argc, const char * argv[]) {
             IonicLogF_Error(TAG, @"Error creating key: %@", error);
             return (int) error.code;
         }
-        if([[getKeyResponse keys] count] == 0) {
+        if ([[getKeyResponse keys] count] == 0) {
             IonicLog_Error(TAG, @"No key was returned (key does not exist or access was denied)");
             return IONIC_AGENT_MISSINGVALUE;
         }
@@ -100,12 +105,14 @@ int main(int argc, const char * argv[]) {
         // display fetched key
         IonicAgentGetKeysResponseKey* fetchedKey = [[getKeyResponse keys] firstObject];
         NSLog(@"FETCHED KEY :");
-        NSLog(@"");
         NSLog(@"KeyId    : %@", [fetchedKey id]);
         NSLog(@"KeyBytes : %@", [fetchedKey key]);
-        NSLog(@"MUTABLE ATTRIBUTES : ");
+        NSLog(@"FixedAttrs : ");
         for (NSObject* each in [[fetchedKey mutableAttributes] allKeys])
-            NSLog(@"%@ : %@", each, [[[fetchedKey mutableAttributes] valueForKey:each] firstObject]);
+            NSLog(@"  %@ : %@", each, [[[fetchedKey mutableAttributes] valueForKey:(NSString*)each] firstObject]);
+        NSLog(@"MutableAttrs : ");
+        for (NSObject* each in [[fetchedKey mutableAttributes] allKeys])
+            NSLog(@"  %@ : %@", each, [[[fetchedKey mutableAttributes] valueForKey:(NSString*)each] firstObject]);
         NSLog(@"");
         
         // define new mutable attributes
@@ -128,12 +135,14 @@ int main(int argc, const char * argv[]) {
         
         // display updated key
         NSLog(@"UPDATED KEY :");
-        NSLog(@"");
         NSLog(@"KeyId    : %@", [updatedResponseKey id]);
         NSLog(@"KeyBytes : %@", [updatedResponseKey key]);
-        NSLog(@"MUTABLE ATTRIBUTES : ");
+        NSLog(@"FixedAttrs : ");
         for (NSObject* each in [[updatedResponseKey mutableAttributes] allKeys])
-            NSLog(@"%@ : %@", each, [[[updatedResponseKey mutableAttributes] valueForKey:each] firstObject]);
+            NSLog(@"  %@ : %@", each, [[[updatedResponseKey mutableAttributes] valueForKey:(NSString*)each] firstObject]);
+        NSLog(@"MutableAttrs : ");
+        for (NSObject* each in [[updatedResponseKey mutableAttributes] allKeys])
+            NSLog(@"  %@ : %@", each, [[[updatedResponseKey mutableAttributes] valueForKey:(NSString*)each] firstObject]);
         NSLog(@"");
     }
         

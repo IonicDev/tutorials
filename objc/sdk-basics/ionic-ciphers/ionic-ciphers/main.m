@@ -1,9 +1,9 @@
 //
 //  main.m
-//  profiles
+//  ionic-ciphers
 //
-//  Created by Nicolas Vautier on 5/22/20.
-//  Copyright © 2020 Nicolas Vautier. All rights reserved.
+//  Copyright © 2020 Ionic Security Inc. All rights reserved.
+//  By using this code, I agree to the Terms & Conditions (https://dev.ionic.com/use.html) and the Privacy Policy (https://www.ionic.com/privacy-notice/).
 //
 
 #import <Foundation/Foundation.h>
@@ -46,7 +46,7 @@ int main(int argc, const char * argv[]) {
         }
         
         // set app metadata
-        [agent setMetadataValue:@"ionic-application-name" forField:@"ionic-ciphers-tutorial"];
+        [agent setMetadataValue:@"ionic-application-name" forField:@"ionic-ciphers-objc-tutorial"];
         [agent setMetadataValue:@"ionic-application-version" forField:@"1.0.0"];
         
 #pragma - mark SENDER
