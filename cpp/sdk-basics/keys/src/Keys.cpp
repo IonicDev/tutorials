@@ -9,12 +9,54 @@
 #include <stdio.h>
 #include <cstdlib>
 #include <iostream>
+#include <vector>
+#include <map>
 
 #ifdef _WIN32
     #define HOMEVAR "USERPROFILE"
 #else 
     #define HOMEVAR "HOME"
 #endif
+
+void print_vector(std::vector <std::string> const &str) {
+    std::cout << "[\"" << str.at(0) << "\"";
+    for (int i = 1; i < str.size(); i += 1) {
+        std::cout << ", " << str.at(i);
+    }
+    std::cout << "]";
+}
+
+template<typename K, typename V>
+void print_attributes(std::map<K,V> const &attributes) {
+    bool first_time = true;
+
+    std::cout << "{";
+    for (auto const& pair: attributes) {
+        if (first_time) {
+            std::cout << "\"" << pair.first << "\": ";
+            first_time = false;
+        }
+        else {
+            std::cout << ", \"" << pair.first << "\": ";
+        }
+        print_vector(pair.second);
+    }
+    std::cout << "}";
+}
+
+template<typename K, typename V>
+void print_fixed_attrs(std::map<K,V> const &fixed_attrs) {
+    std::cout << "FixedAttrs   : ";
+    print_attributes(fixed_attrs);
+    std::cout << std::endl;
+}
+
+template<typename K, typename V>
+void print_mutable_attrs(std::map<K,V> const &mutable_attrs) {
+    std::cout << "MutableAttrs : ";
+    print_attributes(mutable_attrs);
+    std::cout << std::endl;
+}
 
 int main(int argc, char* argv[]) {
 
@@ -77,8 +119,11 @@ int main(int argc, char* argv[]) {
     std::cout << "NEW KEY:" << std::endl;
     ISCryptoHexString hexKeyCreated;
     hexKeyCreated.fromBytes(createdKey->getKey());
-    std::cout << "KeyId    : " << createdKey->getId() << std::endl;
-    std::cout << "KeyBytes : " << hexKeyCreated << std::endl;
+    std::cout << "KeyId        : " << createdKey->getId() << std::endl;
+    std::cout << "KeyBytes     : " << hexKeyCreated << std::endl;
+    print_fixed_attrs(createdKey->getAttributes());
+    print_mutable_attrs(createdKey->getMutableAttributes());
+    
 
     // get key by KeyId
     ISAgentGetKeysResponse getResponse;
@@ -100,6 +145,8 @@ int main(int argc, char* argv[]) {
     hexKeyFetched.fromBytes(fetchedKey.getKey());
     std::cout << "KeyId    : " << fetchedKey.getId() << std::endl;
     std::cout << "KeyBytes : " << hexKeyFetched << std::endl;
+    print_fixed_attrs(fetchedKey.getAttributes());
+    print_mutable_attrs(fetchedKey.getMutableAttributes());
 
     // define new mutable attributes
     std::vector<std::string> newClassificationVal;
@@ -124,4 +171,6 @@ int main(int argc, char* argv[]) {
     hexKeyUpdated.fromBytes(updatedKey.getKey());
     std::cout << "KeyId    : " << updatedKey.getId() << std::endl;
     std::cout << "KeyBytes : " << hexKeyUpdated << std::endl;
+    print_fixed_attrs(updatedKey.getAttributes());
+    print_mutable_attrs(updatedKey.getMutableAttributes());
 }
