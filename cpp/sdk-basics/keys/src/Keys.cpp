@@ -9,8 +9,10 @@
 #include <stdio.h>
 #include <cstdlib>
 #include <iostream>
+#include <string>
 #include <vector>
 #include <map>
+using namespace std;
 
 #ifdef _WIN32
     #define HOMEVAR "USERPROFILE"
@@ -18,44 +20,49 @@
     #define HOMEVAR "HOME"
 #endif
 
-void print_vector(std::vector <std::string> const &str) {
-    std::cout << "[\"" << str.at(0) << "\"";
-    for (int i = 1; i < str.size(); i += 1) {
-        std::cout << ", " << str.at(i);
-    }
-    std::cout << "]";
-}
-
-template<typename K, typename V>
-void print_attributes(std::map<K,V> const &attributes) {
+void print_vector(vector <string> const &strings) {
     bool first_time = true;
 
-    std::cout << "{";
-    for (auto const& pair: attributes) {
+    cout << "[";
+    for (auto const& str: strings) {
         if (first_time) {
-            std::cout << "\"" << pair.first << "\": ";
+            cout << "\"" << str << "\"";
             first_time = false;
         }
         else {
-            std::cout << ", \"" << pair.first << "\": ";
+            cout << ",\"" << str << "\"";
+        }
+    }
+    cout << "]";
+}
+
+void print_attributes(map<string, vector<string>> const &attributes) {
+    bool first_time = true;
+
+    cout << "{";
+    for (auto const& pair: attributes) {
+        if (first_time) {
+            cout << "\"" << pair.first << "\": ";
+            first_time = false;
+        }
+        else {
+            cout << ", \"" << pair.first << "\": ";
         }
         print_vector(pair.second);
     }
-    std::cout << "}";
+    cout << "}";
 }
 
-template<typename K, typename V>
-void print_fixed_attrs(std::map<K,V> const &fixed_attrs) {
-    std::cout << "FixedAttrs   : ";
+void print_fixed_attrs(map<string, vector<string>> const &fixed_attrs) {
+    cout << "FixedAttrs   : ";
     print_attributes(fixed_attrs);
-    std::cout << std::endl;
+    cout << endl;
 }
 
-template<typename K, typename V>
-void print_mutable_attrs(std::map<K,V> const &mutable_attrs) {
-    std::cout << "MutableAttrs : ";
+void print_mutable_attrs(map<string, vector<string>> const &mutable_attrs) {
+    cout << "MutableAttrs : ";
     print_attributes(mutable_attrs);
-    std::cout << std::endl;
+    cout << endl;
 }
 
 int main(int argc, char* argv[]) {
@@ -63,41 +70,41 @@ int main(int argc, char* argv[]) {
     int nErrorCode;
 
     // read persistor password from environment variable
-    char* cpersistorPassword = std::getenv("IONIC_PERSISTOR_PASSWORD");
+    char* cpersistorPassword = getenv("IONIC_PERSISTOR_PASSWORD");
     if (cpersistorPassword == NULL) {
-        std::cerr << "[!] Please provide the persistor password as env variable: IONIC_PERSISTOR_PASSWORD" << std::endl;
+        cerr << "[!] Please provide the persistor password as env variable: IONIC_PERSISTOR_PASSWORD" << endl;
         exit(1);
     }
-    std::string persistorPassword = std::string(cpersistorPassword);
+    string persistorPassword = string(cpersistorPassword);
 
     // initialize agent with password persistor
-    std::string persistorPath = std::string(std::getenv(HOMEVAR)) + "/.ionicsecurity/profiles.pw";
+    string persistorPath = string(getenv(HOMEVAR)) + "/.ionicsecurity/profiles.pw";
     ISAgentDeviceProfilePersistorPassword persistor;
     persistor.setFilePath(persistorPath);
     persistor.setPassword(persistorPassword);
     ISAgent agent;
     nErrorCode = agent.initialize(persistor);
     if (nErrorCode != ISAGENT_OK) {
-        std::cerr << "Failed to initialize agent from password persistor (" << persistorPath << ")" << std::endl;
-        std::cerr << ISAgentSDKError::getErrorCodeString(nErrorCode) << std::endl;
+        cerr << "Failed to initialize agent from password persistor (" << persistorPath << ")" << endl;
+        cerr << ISAgentSDKError::getErrorCodeString(nErrorCode) << endl;
         exit(1);
     }
     agent.setMetadata("ionic-application-name", "ionic-keys-tutorial");
     agent.setMetadata("ionic-application-version", "1.0.0");
 
     // define fixed attributes
-    std::map< std::string, std::vector< std::string > > fixedAttributes;
-    std::vector<std::string> dataTypeVal;
-    std::vector<std::string> regionVal;
+    map<string, vector<string >> fixedAttributes;
+    vector<string> dataTypeVal;
+    vector<string> regionVal;
     dataTypeVal.push_back("Finance");
     regionVal.push_back("North America");
     fixedAttributes["data-type"] = dataTypeVal;
     fixedAttributes["region"] = regionVal;
 
     // define mutable attributes
-    std::map< std::string, std::vector< std::string > > mutableAttributes;
-    std::vector<std::string> classificationVal;
-    std::vector<std::string> designatedOwnerVal;
+    map<string, vector<string >> mutableAttributes;
+    vector<string> classificationVal;
+    vector<string> designatedOwnerVal;
     classificationVal.push_back("Restricted");
     designatedOwnerVal.push_back("joe@hq.example.com");
     mutableAttributes["classification"] = classificationVal;
@@ -110,46 +117,46 @@ int main(int argc, char* argv[]) {
     ISAgentCreateKeysResponse response;
     nErrorCode = agent.createKeys(request, response);
     if (nErrorCode != ISAGENT_OK) {
-        std::cerr << "Error creating key: " << ISAgentSDKError::getErrorCodeString(nErrorCode) << std::endl;
+        cerr << "Error creating key: " << ISAgentSDKError::getErrorCodeString(nErrorCode) << endl;
         exit(1);
     }
     const ISAgentCreateKeysResponse::Key *createdKey = response.findKey("refid1");
 
     // display new key
-    std::cout << "NEW KEY:" << std::endl;
+    cout << "NEW KEY:" << endl;
     ISCryptoHexString hexKeyCreated;
     hexKeyCreated.fromBytes(createdKey->getKey());
-    std::cout << "KeyId        : " << createdKey->getId() << std::endl;
-    std::cout << "KeyBytes     : " << hexKeyCreated << std::endl;
+    cout << "KeyId        : " << createdKey->getId() << endl;
+    cout << "KeyBytes     : " << hexKeyCreated << endl;
     print_fixed_attrs(createdKey->getAttributes());
     print_mutable_attrs(createdKey->getMutableAttributes());
     
 
     // get key by KeyId
     ISAgentGetKeysResponse getResponse;
-    std::string keyId = createdKey->getId();
+    string keyId = createdKey->getId();
     nErrorCode = agent.getKey(keyId, getResponse);
     if (nErrorCode != ISAGENT_OK) {
-        std::cerr << "Error fetching key: " << ISAgentSDKError::getErrorCodeString(nErrorCode) << std::endl;
+        cerr << "Error fetching key: " << ISAgentSDKError::getErrorCodeString(nErrorCode) << endl;
         exit(1);
     }
     if (response.getKeys().size() == 0) {
-        std::cerr << "No key was returned (key does not exist or access was denied)" << std::endl;
+        cerr << "No key was returned (key does not exist or access was denied)" << endl;
         exit(1);
     }
     ISAgentGetKeysResponse::Key fetchedKey = getResponse.getKeys().at(0);
 
     // display fetched key
-    std::cout << "\nFETCHED KEY:" << std::endl;
+    cout << "\nFETCHED KEY:" << endl;
     ISCryptoHexString hexKeyFetched;
     hexKeyFetched.fromBytes(fetchedKey.getKey());
-    std::cout << "KeyId    : " << fetchedKey.getId() << std::endl;
-    std::cout << "KeyBytes : " << hexKeyFetched << std::endl;
+    cout << "KeyId    : " << fetchedKey.getId() << endl;
+    cout << "KeyBytes : " << hexKeyFetched << endl;
     print_fixed_attrs(fetchedKey.getAttributes());
     print_mutable_attrs(fetchedKey.getMutableAttributes());
 
     // define new mutable attributes
-    std::vector<std::string> newClassificationVal;
+    vector<string> newClassificationVal;
     newClassificationVal.push_back("Highly Restricted");
 
     // merge new and existing mutable attributes
@@ -160,17 +167,17 @@ int main(int argc, char* argv[]) {
     ISAgentUpdateKeysResponse updateResponse;
     nErrorCode = agent.updateKey(updateKey, updateResponse);
     if (nErrorCode != ISAGENT_OK) {
-        std::cerr << "Error updating key: " << ISAgentSDKError::getErrorCodeString(nErrorCode) << std::endl;
+        cerr << "Error updating key: " << ISAgentSDKError::getErrorCodeString(nErrorCode) << endl;
         exit(1);
     }
     ISAgentUpdateKeysResponse::Key updatedKey = updateResponse.getKeys().at(0);
 
     // display updated key
-    std::cout << "\nUPDATED KEY:" << std::endl;
+    cout << "\nUPDATED KEY:" << endl;
     ISCryptoHexString hexKeyUpdated;
     hexKeyUpdated.fromBytes(updatedKey.getKey());
-    std::cout << "KeyId    : " << updatedKey.getId() << std::endl;
-    std::cout << "KeyBytes : " << hexKeyUpdated << std::endl;
+    cout << "KeyId    : " << updatedKey.getId() << endl;
+    cout << "KeyBytes : " << hexKeyUpdated << endl;
     print_fixed_attrs(updatedKey.getAttributes());
     print_mutable_attrs(updatedKey.getMutableAttributes());
 }
