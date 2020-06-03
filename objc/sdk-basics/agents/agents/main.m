@@ -62,7 +62,7 @@ int main(int argc, const char * argv[]) {
         }
         
         IonicAgentCreateKeysResponseKey* responseKey = [response findKeyUsingRefId:@"refid1"];
-        NSLog(@"CREATED NEW KEY  : %@", [responseKey refId]);
+        NSLog(@"CREATED NEW KEY  : %@", [responseKey id]);
     }
         
     return 0;

@@ -18,9 +18,6 @@ int main(int argc, const char * argv[]) {
         profilePersistor.filePath = persistorPath;
         profilePersistor.password = @"ionic123";
         
-        
-        //NSString* path = [[[NSProcessInfo processInfo]environment]objectForKey:@"PATH"];
-        
         NSError * error = nil;
         
         // create an agent and initialize it with the password persistor all defaults
@@ -34,11 +31,12 @@ int main(int argc, const char * argv[]) {
         }
         
         // list all available profiles
+        NSLog(@"ALL PROFILES:");
         NSArray<IonicAgentDeviceProfile*> *profiles = [agent profiles];
         for (IonicAgentDeviceProfile *eachProfile in profiles) {
             NSLog(@"---");
-            NSLog(@"ID       : %@", [eachProfile deviceId]);
             NSLog(@"Name     : %@", [eachProfile name]);
+            NSLog(@"ID       : %@", [eachProfile deviceId]);
             NSLog(@"Keyspace : %@", [eachProfile keyspace]);
             NSLog(@"ApiUrl   : %@", [eachProfile server]);
         }
