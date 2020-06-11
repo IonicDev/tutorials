@@ -5,25 +5,23 @@
  */
 
 /*
- * WARNING *
- * Calling agent.enrollUser() successfully is a pre-requisite before using this code.
- * This is done when you enrolled your device after signing up for a tenant.
+ ** PRE-REQUISITES **
+ * 1. A Machina tenant. You can obtain one at: https://ionic.com/start-for-free/.
+ * 2. Your device, in this case the browser, needs to be enrolled. This is done 
+ *    when you enrolled your device after signing up for a tenant. Enrollment 
+ *    can also be accomplished by executing the Enroll Device script at:
+ *    ../../enroll-device/index.html.
  */
 
-// AppData for all Javascript samples: appId, userId, and userAuth needs to be the same
-// as the appData that was used for enrollment.
-const appData = {
-  appId: 'ionic-js-samples',
-  userId: 'developer',
-  userAuth: 'password123',
-  metadata: {
-    'ionic-application-name': 'Javascript Profiles Tutorial',
-    'ionic-application-version': '1.3.0'
-  }
-};
+"use strict";
+import {getAgentConfig} from '../../jssdkConfig.js';
 
 const main = async () => {
   
+  // Get the tutorial application data. This assures all tutorils use the same
+  // app ID, user ID and user authentication. It matches what was used for enrollment.
+  const appData = getAgentConfig('Javascript Profiles Tutorial');
+
   // Initialize the Machina agent.
   try {
     const resp = await new window.IonicSdk.ISAgent(appData);
@@ -42,19 +40,19 @@ const main = async () => {
     }
 
     // Get all the profiles.
-    const response = await agent.queryProfiles(appData).catch((error) => {
-      console.log('Query profiles error: ' +  error.error);
+    let response = await agent.queryProfiles(appData).catch((errorResp) => {
+      console.log('Query profiles error: ' +  errorResp.error);
     });
     const profiles = response.profiles;
 
     // Verify there is at least one profile.
-    if (profiles.length == 0) {
+    if (profiles.length === 0) {
       console.log('No profiles found');
       return;
     }
       
     // List all available profiles.
-    var index, len, active_device_id;
+    let index, len;
     console.log('');
     console.log('ALL PROFILES:');
     for (index = 0, len = profiles.length; index < len; ++index) {
@@ -63,51 +61,67 @@ const main = async () => {
       console.log('Created&nbsp;&nbsp; : ' + profiles[index].created);
       console.log('Keyspace&nbsp;  : ' + profiles[index].keyspace);
       console.log('ApiUrl&nbsp;&nbsp&nbsp; : ' + profiles[index].server);
-
-      // Save active (passive) profile device ID for later.
-      if (profiles[index].active) {
-        active_device_id = profiles[index].deviceId;
-      }
     }
     console.log(' ');
 
+    // Get the active profile.
+    response = await agent.getActiveProfile().catch((errorResp) => {
+      console.log('Get Active Profile error: ' +  errorResp.error);
+    });
+    const activeDeviceId = response.deviceId;
+
+    // Display active profile.
+    console.log('\nACTIVE PROFILE: ' + activeDeviceId);
+    console.log(' ');
+
     // If the number of profiles is equal to one, then there is nothing to set.
-    if (profiles.length == 1) {
+    if (profiles.length === 1) {
       console.log('Only one profile, nothing to change.');
       return;
     }
-      
-    // Display active profile.
-    console.log('\nACTIVE PROFILE: ', active_device_id);
+
+    // Search or a non-active profile.
+    let newProfileId = '';
+    for (index = 0, len = profiles.length; index < len; ++index) {
+      if (! profiles[index].active) {
+        newProfileId = profiles[index].deviceId;
+        break;
+      }
+    }
+
+    if (newProfileId === '') {
+      console.log('Didn\'t find a non-active profile');
+      return;
+    }
 
     // Change the active profile.
-    const new_profile_id = 'HVzG.3.cf55cc46-bd06-4d00-9202-eb667f03eea4';
-    console.log('\nSETTING NEW ACTIVE PROFILE: ', new_profile_id);
+    console.log('\nSETTING NEW ACTIVE PROFILE: ' +  newProfileId);
 
     // Define the profile to make active.
     const profile_to_set =
       { appId: appData.appId,
         userId: appData.userId,
         userAuth: appData.userAuth,
-        deviceId: new_profile_id
+        deviceId: newProfileId
       };
   
     // Set the active profile.
     const set_active_profile_resp = await agent.setActiveProfile(profile_to_set).catch((error) => {
-      console.log('Set active profile error: ', error);
-    })
+      console.log('Set active profile error: ' +  error);
+    });
 
-    // Loop through the list of profiles looking for active profile,
-    // and output information about the active profile.
-    const updated_profiles = set_active_profile_resp.profiles;
-    for (index = 0, len = updated_profiles.length; index < len; ++index) {
-      if (updated_profiles[index].active) {
-        console.log('\nNEW ACTIVE PROFILE: ', updated_profiles[index].deviceId);
-      }
-    }
-  } catch (error) {
-    console.error('Error initializing ionic agent:' + error);
-  };
-}
+    // Get the updated active profile.
+    response = await agent.getActiveProfile().catch((errorResp) => {
+      console.log('Get Active Profile error: ' +  errorResp.error);
+    });
+    const newActiveDeviceId = response.deviceId;
+
+    // Display active profile.
+    console.log('\nNEW ACTIVE PROFILE: ' + newActiveDeviceId);
+
+  } catch (errorResp) {
+    console.error('Error initializing ionic agent:' + errorResp.error);
+  }
+};
 
 main();

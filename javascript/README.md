@@ -2,13 +2,15 @@
 
 You will need a Machina instance to execute these tutorials.  You can create a Machina instance from our [Machina Developers Portal](https://dev.ionic.com) by clicking on the *"Start For Free*" link. You will receive an e-mail which contains your keyspace, tenant ID, and user name (e-mail).  Please save these for future use.
 
-If you already have a Machina instance, you will need the keyspace, tenant ID, and user name (e-mail).  These can be found in the original welcome e-mail or from your Machina instance administrator.
+If you already have a Machina instance, you will need the keyspace, user name (e-mail),
+and password.  These can be found in the original welcome e-mail or from your Machina instance
+administrator.
 
-All the tutorials can be executed in our [Machina Developers Portal](https://dev.ionic.com/tutorials/sdk-basics/profiles?language=javascript) or in a local web server.
+All the tutorials can be executed in the browser from [Machina Developers Portal](https://dev.ionic.com/tutorials/sdk-basics/profiles?language=javascript) or in a local web server.
 
 ## Executing Tutorials in Local Web Server
 
-To run the Machina Javascript tutorials in a local web server, you will need to do:
+To run the Machina Javascript tutorials in a local web server, you will need to:
 
 **Step 1**: Clone Ionic tutorials repo from Github.
 
@@ -17,14 +19,7 @@ git clone https://github.com/IonicDev/tutorials
 cd tutorials/javascript/
 ~~~
 
-**Step 2**: Open jssdkConfig.js in your favorite editor and modify:
-
-1. `const keyspace = ''` with your keyspace
-2. `const tenant = ''` with your tenant ID.
-
-**Note:** All the Javascript tutorials use the jssdkConfig.js for configuration.
-
-**Step 3**: Start a local webserver (example: [http-server](https://www.npmjs.com/package/http-server)) in the `samples/javascript` directory.
+**Step 2**: Start a local webserver (example: [http-server](https://www.npmjs.com/package/http-server)) in the `samples/javascript` directory.
 
 ~~~bash
 node http-server
