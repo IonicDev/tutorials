@@ -3,10 +3,10 @@
  * By using this code, I agree to the Terms & Conditions (https://dev.ionic.com/use.html)
  * and the Privacy Policy (https://www.ionic.com/privacy-notice/).
  */
-"use strict";
 
 // Returns common agent configuration.
 export function getAgentConfig(applicationName) {
+"use strict";
 
   // This is the common agent configuration for the Javascript SDK samples.  The appId, userId,
   //  and userAuth needs to be the same as the agent configuration that was used in enrollment.
