@@ -13,12 +13,13 @@
 // is recommended to select 'Ionic Authentication'.
 //
 
-"use strict";
 import {getAgentConfig} from '../jssdkConfig.js';
 
 // Handles key press event for text input.
 // Process 'Enter' key like clicking submit button.
 function keyPress (event) {
+  "use strict";
+
   if (event.key === 'Enter') {
     keyspaceSubmit(event);
   }
@@ -26,9 +27,11 @@ function keyPress (event) {
 
 // Handles the keyspace submit button click.
 // Obtains keyspace from text input and process.
-async function keyspaceSubmit (event) {
+async function keyspaceSubmit () {
+  "use strict";
+
   const keyspace = document.getElementById('keyspaceText').value;
-  document.getElementById('keyspaceText').value = '';;
+  document.getElementById('keyspaceText').value = '';
 
   // Validate keyspace.
   const knsJson = await getKeyspaceInfo(keyspace);
@@ -47,6 +50,7 @@ async function keyspaceSubmit (event) {
 
 // Check with the Key Naming Server (KNS) to see if the keyspace is valid.
 async function getKeyspaceInfo (keyspace) {
+  "use strict";
 
   const response = await fetch('https://api.ionic.com/v2.4/kns/keyspaces/' + keyspace);
   const json = await response.json();
@@ -55,6 +59,8 @@ async function getKeyspaceInfo (keyspace) {
 
 // Enroll the device, but first check if we're already enrolled.
 async function enrollDevice (enrollUrl, keyspace, tenantId) {
+  "use strict";
+
   // Get the standard appData and add enrollmentURL.
   let appData = getAgentConfig('Javascript Enroll Device');
   appData = Object.assign(appData, {enrollmentUrl: enrollUrl});
@@ -73,8 +79,11 @@ async function enrollDevice (enrollUrl, keyspace, tenantId) {
       return;
     }
   } catch (errorResp) {
-    console.log('Error with loadUser(): ' + errorResp.error);
-    return;
+    // Check for error 40022, "No active device profile is set".
+    if (errorResp.sdkResponseCode !== 40022) {
+      console.log('Error with loadUser(): ' + errorResp.error);
+      return;
+    }
   }
 
   // Since it has been determined that we are not enrolled, so enroll the device.
@@ -90,7 +99,7 @@ async function enrollDevice (enrollUrl, keyspace, tenantId) {
         console.log('Enrolled for keyspace ' + keyspace + ' and tenant ' + tenantId + ' with app ' + appData.appId + ' and user ' + appData.userId + '.');
         enrollWindow.close();
       } catch (errorResp) {
-        console.log('Error with enrollment response: ' + errorResp.error)
+        console.log('Error with enrollment response: ' + errorResp.error);
       }
       
     }

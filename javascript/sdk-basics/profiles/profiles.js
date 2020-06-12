@@ -30,19 +30,15 @@ const main = async () => {
       return;
     }
     const agent = resp.agent;
-
-    const activeResp = await agent.getActiveProfile().catch((error) => {
-      console.log('NO ACTIVE PROFILE: ' + error.error);
-    });
-
-    if (activeResp === undefined) {
-      return;
-    }
+    let response;
 
     // Get all the profiles.
-    let response = await agent.queryProfiles(appData).catch((errorResp) => {
-      console.log('Query profiles error: ' +  errorResp.error);
-    });
+    try {
+      response = await agent.queryProfiles(appData);
+     } catch (errorResp) {
+        console.log('Query profiles error: ' +  errorResp.error);
+        return;
+     }
     const profiles = response.profiles;
 
     // Verify there is at least one profile.
@@ -65,17 +61,25 @@ const main = async () => {
     console.log(' ');
 
     // Get the active profile.
-    response = await agent.getActiveProfile().catch((errorResp) => {
+    let activeProfile = true;
+    try {
+      response = await agent.getActiveProfile();
+    } catch (errorResp) {
       console.log('Get Active Profile error: ' +  errorResp.error);
-    });
+      activeProfile = false;
+    }
     const activeDeviceId = response.deviceId;
 
     // Display active profile.
-    console.log('\nACTIVE PROFILE: ' + activeDeviceId);
+    if (activeProfile) {
+      console.log('\nACTIVE PROFILE: ' + activeDeviceId);
+    } else {
+      console.log('\nNO ACTIVE PROFILE');
+    }
     console.log(' ');
-
-    // If the number of profiles is equal to one, then there is nothing to set.
-    if (profiles.length === 1) {
+    
+    // If there is an active profile and only one profile, then there is nothing to set.
+    if (activeProfile && profiles.length === 1) {
       console.log('Only one profile, nothing to change.');
       return;
     }
@@ -98,7 +102,7 @@ const main = async () => {
     console.log('\nSETTING NEW ACTIVE PROFILE: ' +  newProfileId);
 
     // Define the profile to make active.
-    const profile_to_set =
+    const profileToSet =
       { appId: appData.appId,
         userId: appData.userId,
         userAuth: appData.userAuth,
@@ -106,14 +110,20 @@ const main = async () => {
       };
   
     // Set the active profile.
-    const set_active_profile_resp = await agent.setActiveProfile(profile_to_set).catch((error) => {
-      console.log('Set active profile error: ' +  error);
-    });
+    try {
+      response = await agent.setActiveProfile(profileToSet);
+    } catch (errorResp) { 
+      console.log('Set active profile error: ' +  errorResp.error);
+      return;
+    }
 
     // Get the updated active profile.
-    response = await agent.getActiveProfile().catch((errorResp) => {
+    try {
+      response = await agent.getActiveProfile();
+    } catch (errorResp) {
       console.log('Get Active Profile error: ' +  errorResp.error);
-    });
+      return;
+    }
     const newActiveDeviceId = response.deviceId;
 
     // Display active profile.

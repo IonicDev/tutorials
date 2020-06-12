@@ -3,13 +3,15 @@
  * By using this code, I agree to the Terms & Conditions (https://dev.ionic.com/use.html)
  * and the Privacy Policy (https://www.ionic.com/privacy-notice/).
  */
-"use strict";
 
 // Maps console.log() to add to output_area and console.log().
 // The calling HTML script needs to use output-area to display information.
 
 var oldLog = console.log;
+
 console.log = function (message) {
+  "use strict";
+
   var output_area = document.getElementById("output-area");
   if (message === '') {
     output_area.innerHTML = '';
