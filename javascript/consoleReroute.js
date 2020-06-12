@@ -8,10 +8,13 @@
 // The calling HTML script needs to use output-area to display information.
 
 var oldLog = console.log;
+
 console.log = function (message) {
+  "use strict";
+
   var output_area = document.getElementById("output-area");
   if (message === '') {
-    output_area.innerHTML = ''
+    output_area.innerHTML = '';
     output_area.style.backgroundColor = '#EDEDED';
     output_area.style.fontFamily = 'courier';
     output_area.style.fontSize = '100%';
