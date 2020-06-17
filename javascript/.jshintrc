@@ -1,0 +1,10 @@
+{
+  "browser": true,
+  "curly": true,
+  "eqeqeq": true,
+  "esversion": 8,
+  "node": true,
+  "strict": "implied",
+  "undef": true,
+  "unused": true
+}

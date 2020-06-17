@@ -16,7 +16,6 @@
 import {getAgentConfig} from '../../jssdkConfig.js';
 
 const main = async () => {
-  "use strict";
   
   // Get the tutorial application data. This assures all tutorils use the same
   // app ID, user ID and user authentication. It matches what was used for enrollment.
