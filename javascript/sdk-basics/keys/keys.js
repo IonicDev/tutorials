@@ -5,12 +5,18 @@
  */
 
 /*
- * WARNING *
- * Calling agent.enrollUser() successfully is a pre-requisite before using this code.
- * This is done when you enrolled your device after signing up for a tenant.
+ ** PRE-REQUISITES **
+ * 1. A Machina tenant. You can obtain one at: https://ionic.com/start-for-free/.
+ * 2. Your device, in this case the browser, needs to be enrolled. This is done 
+ *    when you enrolled your device after signing up for a tenant. Enrollment 
+ *    can also be accomplished by executing the Enroll Device script at:
+ *    ../../enroll-device/index.html.
  */
 
+import {getAgentConfig} from '../../jssdkConfig.js';
+
 function printKey( text, key ) {
+  "use strict";
   console.log(text);
   console.log(`KeyId    : ${key.keyId}`);
   console.log(`KeyBytes : ${key.key}`);
@@ -19,114 +25,106 @@ function printKey( text, key ) {
   console.log(' ');
 }
 
-// AppData for all Javascript samples: appId, userId, and userAuth needs to be the same
-// as the appData that was used for enrollment.
-const appData = {
-  appId: 'ionic-js-samples',
-  userId: 'developer',
-  userAuth: 'password123',
-  metadata: {
-    'ionic-application-name': 'Javascript Keys Tutorial',
-    'ionic-application-version': '1.3.0'
-  }
-};
-
 const main = async () => {
+  "use strict";
+
+  // Get the tutorial application data. This assures all tutorils use the same
+  // app ID, user ID and user authentication. It matches what was used for enrollment.
+  const appData = getAgentConfig('Javascript Keys Tutorial');
+  let response;
 
   // Initialize the Machina agent.
   try {
-    const resp = await new window.IonicSdk.ISAgent(appData);
-    const agent = resp.agent;
+    response = await new window.IonicSdk.ISAgent(appData);
+  } catch (errorResp) {
+    console.error('Error initializing ionic agent:' + errorResp);
+    return;
+  }
+  const agent = response.agent;
 
-    // Define fixed attributes.
+  // Define fixed attributes.
     const fixedAttributes = {
       'data-type': ['Finance'],
       'region': ['North America'],
     };
 
-    // Define mutable attributes.
-    let mutableAttributes = {
-      'classification': ['Restricted'],
-      'designated_owner': ['joe@hq.example.com'],
-    };
-
-    let response;
-
-    // Create single key with fixed and mutable attributes.
-    try {
-      response = await agent.createKeys({
-        quantity: 1,
-        attributes: fixedAttributes,
-        mutableAttributes: mutableAttributes
-      })
-    } catch (error) {
-      console.log('Error creating key: ' + error);
-      return;
-    }
-
-    // Save the key ID.
-    const createdKey = response.keys[0];
-    const keyId = createdKey.keyId;
-
-    // Display new key.
-    console.log('');
-    printKey('New Key:', createdKey);
-  
-    // Fetch the key by Key ID.
-    try {
-      response = await agent.getKeys({keyIds: [keyId]})
-    } catch (error) {
-        console.log('Error getting key: ' + error);
-        return;
-    };
-  
-    const fetchedKey = response.keys[0];
-  
-    // Display fetched key.
-    printKey('Fetched Key:', fetchedKey);
-  
-    // Define new mutable attributes.
-    const newMutableAttributes = {
-      'classification': ['Highly Restricted'],
-    };
-  
-    // Merge new and existing mutable attributes.
-    Object.assign(mutableAttributes, newMutableAttributes);
-  
-    // Update the key.
-    try {
-      response = await agent.updateKeys({
-        keyRequests: [{
-          keyId: fetchedKey.keyId,
-          force: true,
-          mutableAttributes: mutableAttributes,
-        }],
-      })
-      } catch (error) {
-        console.log('Error updating key: ' + error);
-        return;
-    };
-  
-    const updatedKeyId = response.keys[0].keyId;
-  
-    // To display the updated key, a fetch key is required.
-    try {
-      response = await agent.getKeys({
-        keyIds: [updatedKeyId],
-        })
-    } catch (error) {
-      console.log('Error fetching updated key: ' + error);
-      return;
-    };
-  
-    const updatedKey = response.keys[0];
-  
-    // Display updated key.
-    printKey('Updated Key:', updatedKey);
-
-  } catch (error) {
-    console.error('Error initializing ionic agent:' + error);
+  // Define mutable attributes.
+  let mutableAttributes = {
+    'classification': ['Restricted'],
+    'designated_owner': ['joe@hq.example.com'],
   };
+
+  // Create single key with fixed and mutable attributes.
+  try {
+    response = await agent.createKeys({
+      quantity: 1,
+      attributes: fixedAttributes,
+      mutableAttributes: mutableAttributes
+    });
+  } catch (errorResp) {
+    console.log('Error creating key: ' + errorResp);
+    return;
+  }
+
+  // Save the key ID.
+  const createdKey = response.keys[0];
+  const keyId = createdKey.keyId;
+
+  // Display new key.
+  console.log('');
+  printKey('New Key:', createdKey);
+
+  // Fetch key by Key ID.
+  try {
+    response = await agent.getKeys({keyIds: [keyId]});
+  } catch (errorResp) {
+      console.log('Error getting key: ' + errorResp);
+      return;
+  }
+
+  const fetchedKey = response.keys[0];
+
+  // Display fetched key.
+  printKey('Fetched Key:', fetchedKey);
+
+  // Define new mutable attributes.
+  const newMutableAttributes = {
+    'classification': ['Highly Restricted'],
+  };
+
+  // Merge new and existing mutable attributes.
+  Object.assign(mutableAttributes, newMutableAttributes);
+
+  // Update the key.
+  try {
+    response = await agent.updateKeys({
+      keyRequests: [{
+        keyId: fetchedKey.keyId,
+        force: true,
+        mutableAttributes: mutableAttributes,
+      }],
+    });
+    } catch (errorResp) {
+      console.log('Error updating key: ' + errorResp);
+      return;
+  }
+
+  const updatedKeyId = response.keys[0].keyId;
+
+  // To display the updated key, a fetch key is required.
+  try {
+    response = await agent.getKeys({
+      keyIds: [updatedKeyId],
+      });
+  } catch (errorResp) {
+    console.log('Error fetching updated key: ' + errorResp);
+    return;
+  }
+
+  const updatedKey = response.keys[0];
+
+  // Display updated key.
+  printKey('Updated Key:', updatedKey);
 
 };
 
