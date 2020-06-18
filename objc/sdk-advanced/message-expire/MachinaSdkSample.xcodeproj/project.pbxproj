@@ -1,0 +1,479 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D546C082477388E00F35133 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D546C072477388E00F35133 /* libc++.tbd */; };
+		0D7DACF3249A8EA800D876B1 /* IonicAgentSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7DACF2249A8EA800D876B1 /* IonicAgentSDK.framework */; };
+		4FF7542F2498532B00C329D8 /* profiles.pw in Resources */ = {isa = PBXBuildFile; fileRef = 4FF7542E2498532B00C329D8 /* profiles.pw */; };
+		899FCEF020484030009CEF93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 899FCEEF20484030009CEF93 /* AppDelegate.m */; };
+		899FCEF320484030009CEF93 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 899FCEF220484030009CEF93 /* ViewController.m */; };
+		899FCEF620484030009CEF93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 899FCEF420484030009CEF93 /* Main.storyboard */; };
+		899FCEF820484030009CEF93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 899FCEF720484030009CEF93 /* Assets.xcassets */; };
+		899FCEFB20484030009CEF93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 899FCEF920484030009CEF93 /* LaunchScreen.storyboard */; };
+		899FCEFE20484030009CEF93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 899FCEFD20484030009CEF93 /* main.m */; };
+		899FCF0820484030009CEF93 /* MachinaSdkSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 899FCF0720484030009CEF93 /* MachinaSdkSampleTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		899FCF0420484030009CEF93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 899FCEE32048402F009CEF93 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 899FCEEA20484030009CEF93;
+			remoteInfo = BahamaAirLoginScreenOC;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0D546C072477388E00F35133 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		0D7DACF2249A8EA800D876B1 /* IonicAgentSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IonicAgentSDK.framework; path = "../../../../../Production/Sdks/MachinaToolsSDKObjC-1.8.0-iOS/ISAgentSDKObjC/IonicAgentSDK.framework"; sourceTree = "<group>"; };
+		4FF7542E2498532B00C329D8 /* profiles.pw */ = {isa = PBXFileReference; lastKnownFileType = file; path = profiles.pw; sourceTree = "<group>"; };
+		899FCEEB20484030009CEF93 /* MachinaSdkSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MachinaSdkSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		899FCEEE20484030009CEF93 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		899FCEEF20484030009CEF93 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		899FCEF120484030009CEF93 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		899FCEF220484030009CEF93 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		899FCEF520484030009CEF93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		899FCEF720484030009CEF93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		899FCEFA20484030009CEF93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		899FCEFC20484030009CEF93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		899FCEFD20484030009CEF93 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		899FCF0320484030009CEF93 /* MachinaSdkSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MachinaSdkSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		899FCF0720484030009CEF93 /* MachinaSdkSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MachinaSdkSampleTests.m; sourceTree = "<group>"; };
+		899FCF0920484030009CEF93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		899FCEE820484030009CEF93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D7DACF3249A8EA800D876B1 /* IonicAgentSDK.framework in Frameworks */,
+				0D546C082477388E00F35133 /* libc++.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		899FCF0020484030009CEF93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D546C0024771B8200F35133 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D7DACF2249A8EA800D876B1 /* IonicAgentSDK.framework */,
+				0D546C072477388E00F35133 /* libc++.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		899FCEE22048402F009CEF93 = {
+			isa = PBXGroup;
+			children = (
+				899FCEED20484030009CEF93 /* MachinaSdkSample */,
+				899FCF0620484030009CEF93 /* MachinaSdkSampleTests */,
+				899FCEEC20484030009CEF93 /* Products */,
+				0D546C0024771B8200F35133 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		899FCEEC20484030009CEF93 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				899FCEEB20484030009CEF93 /* MachinaSdkSample.app */,
+				899FCF0320484030009CEF93 /* MachinaSdkSampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		899FCEED20484030009CEF93 /* MachinaSdkSample */ = {
+			isa = PBXGroup;
+			children = (
+				4FF7542E2498532B00C329D8 /* profiles.pw */,
+				899FCEEE20484030009CEF93 /* AppDelegate.h */,
+				899FCEEF20484030009CEF93 /* AppDelegate.m */,
+				899FCEF120484030009CEF93 /* ViewController.h */,
+				899FCEF220484030009CEF93 /* ViewController.m */,
+				899FCEF420484030009CEF93 /* Main.storyboard */,
+				899FCEF720484030009CEF93 /* Assets.xcassets */,
+				899FCEF920484030009CEF93 /* LaunchScreen.storyboard */,
+				899FCEFC20484030009CEF93 /* Info.plist */,
+				899FCEFD20484030009CEF93 /* main.m */,
+			);
+			path = MachinaSdkSample;
+			sourceTree = "<group>";
+		};
+		899FCF0620484030009CEF93 /* MachinaSdkSampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				899FCF0720484030009CEF93 /* MachinaSdkSampleTests.m */,
+				899FCF0920484030009CEF93 /* Info.plist */,
+			);
+			path = MachinaSdkSampleTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		899FCEEA20484030009CEF93 /* MachinaSdkSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 899FCF0C20484030009CEF93 /* Build configuration list for PBXNativeTarget "MachinaSdkSample" */;
+			buildPhases = (
+				899FCEE720484030009CEF93 /* Sources */,
+				899FCEE820484030009CEF93 /* Frameworks */,
+				899FCEE920484030009CEF93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MachinaSdkSample;
+			productName = BahamaAirLoginScreenOC;
+			productReference = 899FCEEB20484030009CEF93 /* MachinaSdkSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		899FCF0220484030009CEF93 /* MachinaSdkSampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 899FCF0F20484030009CEF93 /* Build configuration list for PBXNativeTarget "MachinaSdkSampleTests" */;
+			buildPhases = (
+				899FCEFF20484030009CEF93 /* Sources */,
+				899FCF0020484030009CEF93 /* Frameworks */,
+				899FCF0120484030009CEF93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				899FCF0520484030009CEF93 /* PBXTargetDependency */,
+			);
+			name = MachinaSdkSampleTests;
+			productName = BahamaAirLoginScreenOCTests;
+			productReference = 899FCF0320484030009CEF93 /* MachinaSdkSampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		899FCEE32048402F009CEF93 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = qinglinyou;
+				TargetAttributes = {
+					899FCEEA20484030009CEF93 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					899FCF0220484030009CEF93 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 899FCEEA20484030009CEF93;
+					};
+				};
+			};
+			buildConfigurationList = 899FCEE62048402F009CEF93 /* Build configuration list for PBXProject "MachinaSdkSample" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 899FCEE22048402F009CEF93;
+			productRefGroup = 899FCEEC20484030009CEF93 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				899FCEEA20484030009CEF93 /* MachinaSdkSample */,
+				899FCF0220484030009CEF93 /* MachinaSdkSampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		899FCEE920484030009CEF93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FF7542F2498532B00C329D8 /* profiles.pw in Resources */,
+				899FCEFB20484030009CEF93 /* LaunchScreen.storyboard in Resources */,
+				899FCEF820484030009CEF93 /* Assets.xcassets in Resources */,
+				899FCEF620484030009CEF93 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		899FCF0120484030009CEF93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		899FCEE720484030009CEF93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				899FCEF320484030009CEF93 /* ViewController.m in Sources */,
+				899FCEFE20484030009CEF93 /* main.m in Sources */,
+				899FCEF020484030009CEF93 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		899FCEFF20484030009CEF93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				899FCF0820484030009CEF93 /* MachinaSdkSampleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		899FCF0520484030009CEF93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 899FCEEA20484030009CEF93 /* MachinaSdkSample */;
+			targetProxy = 899FCF0420484030009CEF93 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		899FCEF420484030009CEF93 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				899FCEF520484030009CEF93 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		899FCEF920484030009CEF93 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				899FCEFA20484030009CEF93 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		899FCF0A20484030009CEF93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(IONIC_SDK_PATH)/ISAgentSDKObjC/**";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(IONIC_SDK_PATH)/ISAgentSDKObjC/**";
+				IONIC_SDK_PATH = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		899FCF0B20484030009CEF93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(IONIC_SDK_PATH)/ISAgentSDKObjC/**";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(IONIC_SDK_PATH)/ISAgentSDKObjC/**";
+				IONIC_SDK_PATH = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		899FCF0D20484030009CEF93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V2QK6D4ATU;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = MachinaSdkSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ionic.machina.sample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		899FCF0E20484030009CEF93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V2QK6D4ATU;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = MachinaSdkSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ionic.machina.sample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		899FCF1020484030009CEF93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B6U67PQ87R;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = MachinaSdkSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yinmimoney.BahamaAirLoginScreenOCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MachinaSdkSample.app/MachinaSdkSample";
+			};
+			name = Debug;
+		};
+		899FCF1120484030009CEF93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B6U67PQ87R;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = MachinaSdkSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yinmimoney.BahamaAirLoginScreenOCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MachinaSdkSample.app/MachinaSdkSample";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		899FCEE62048402F009CEF93 /* Build configuration list for PBXProject "MachinaSdkSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				899FCF0A20484030009CEF93 /* Debug */,
+				899FCF0B20484030009CEF93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		899FCF0C20484030009CEF93 /* Build configuration list for PBXNativeTarget "MachinaSdkSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				899FCF0D20484030009CEF93 /* Debug */,
+				899FCF0E20484030009CEF93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		899FCF0F20484030009CEF93 /* Build configuration list for PBXNativeTarget "MachinaSdkSampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				899FCF1020484030009CEF93 /* Debug */,
+				899FCF1120484030009CEF93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 899FCEE32048402F009CEF93 /* Project object */;
+}
