@@ -2,7 +2,8 @@
 //  ViewController.m
 //  MachinaSDKSample
 //
-//  Copyright © 2020 Ionic Inc. All rights reserved.
+//  Copyright © 2020 Ionic Security Inc. All rights reserved.
+//  By using this code, I agree to the Terms & Conditions (https://dev.ionic.com/use.html) and the Privacy Policy (https://www.ionic.com/privacy-notice/).
 //
 
 #import "ViewController.h"
@@ -134,7 +135,7 @@
 - (NSString *) protectMessage:(NSString *) message error:(NSError **) error {
         
     NSError* e = nil;
-    // create an agent and initialize it with the password persistor all defaults
+    // create an agent and initialize it with the password persistor
     IonicAgent * agent = [[IonicAgent alloc] initWithDefaults:self.profilePersistor
                                                         error:&e];
     // check for initialization error
@@ -144,11 +145,12 @@
         *error = e;
         return nil;
     }
-    // create a file cipher which will use our agent for secure communication
+    // initialize a chunk cipher object which will use the agent class for secure communication
     // with Ionic API servers
     IonicChunkCryptoCipherAuto * cipher = [[IonicChunkCryptoCipherAuto alloc] initWithAgent:agent];
     
-    NSDictionary * d = @{ @"ionic-expiration" : @[[self getExpireDate:1]]};
+    // Create key attribute to expire access in in 2 minutes
+    NSDictionary * d = @{ @"ionic-expiration" : @[[self getExpireDate:2]]};
     IonicChunkCryptoEncryptAttributes* attributes = [[IonicChunkCryptoEncryptAttributes alloc] initWithKeyAttributes:d];
     
     // encrypt a sensitive string
@@ -180,7 +182,7 @@
     // with Ionic API servers
     IonicChunkCryptoCipherAuto * cipher = [[IonicChunkCryptoCipherAuto alloc] initWithAgent:agent];
     
-    // encrypt a sensitive file in place
+    // decrypt the cipher text
     NSString* plainTextMessage = [cipher decryptText:protectedMessage error:&e];
     if (e)
     {
@@ -191,7 +193,7 @@
     return plainTextMessage;
 }
 
-// We bundled a profile persistor created on a desktop using the ionic-profiles tool into the application bundle.
+// We bundled a profile persistor created on a desktop using the Machina CLI tool into the application bundle.
 // this method will copy it onto the file system if it hasn't already done so during a previous app launch.
 - (void) createSampleProfile: (NSString*) destPath {
     
