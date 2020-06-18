@@ -10,7 +10,6 @@
 var oldLog = console.log;
 
 console.log = function (message) {
-  "use strict";
 
   var output_area = document.getElementById("output-area");
   if (message === '') {

@@ -18,7 +18,6 @@ import {getAgentConfig} from '../jssdkConfig.js';
 // Handles key press event for text input.
 // Process 'Enter' key like clicking submit button.
 function keyPress (event) {
-  "use strict";
 
   if (event.key === 'Enter') {
     keyspaceSubmit(event);
@@ -28,7 +27,6 @@ function keyPress (event) {
 // Handles the keyspace submit button click.
 // Obtains keyspace from text input and process.
 async function keyspaceSubmit () {
-  "use strict";
 
   const keyspace = document.getElementById('keyspaceText').value;
   document.getElementById('keyspaceText').value = '';
@@ -50,7 +48,6 @@ async function keyspaceSubmit () {
 
 // Check with the Key Naming Server (KNS) to see if the keyspace is valid.
 async function getKeyspaceInfo (keyspace) {
-  "use strict";
 
   const response = await fetch('https://api.ionic.com/v2.4/kns/keyspaces/' + keyspace);
   const json = await response.json();
@@ -59,7 +56,6 @@ async function getKeyspaceInfo (keyspace) {
 
 // Enroll the device, but first check if we're already enrolled.
 async function enrollDevice (enrollUrl, keyspace, tenantId) {
-  "use strict";
 
   // Get the standard appData and add enrollmentURL.
   let appData = getAgentConfig('Javascript Enroll Device');

@@ -5,50 +5,44 @@
  */
 
 /*
- * WARNING *
- * Calling agent.enrollUser() successfully is a pre-requisite before using this code.
- * This is done when you enrolled your device after signing up for a tenant.
+ ** PRE-REQUISITES **
+ * 1. A Machina tenant. You can obtain one at: https://ionic.com/start-for-free/.
+ * 2. Your device, in this case the browser, needs to be enrolled. This is done 
+ *    when you enrolled your device after signing up for a tenant. Enrollment 
+ *    can also be accomplished by executing the Enroll Device script at:
+ *    ../../enroll-device/index.html.
  */
 
-// AppData for all Javascript samples: appId, userId, and userAuth needs to be the same
-// as the appData that was used for enrollment.
-const appData = {
-  appId: 'ionic-js-samples',
-  userId: 'developer',
-  userAuth: 'password123',
-  metadata: {
-    'ionic-application-name': 'Javascript Agents Tutorial',
-    'ionic-application-version': '1.3.0'
-  }
-};
+import {getAgentConfig} from '../../jssdkConfig.js';
 
 const main = async () => {
-
+  
+  // Get the tutorial application data. This assures all tutorials use the same
+  // app ID, user ID and user authentication. It matches what was used for enrollment.
+  const appData = getAgentConfig('Javascript Agents Tutorial');
   let response;
 
   // Initialize the Machina agent.
   try {
-    const resp = await new window.IonicSdk.ISAgent(appData);
-    const agent = resp.agent;
+    response = await new window.IonicSdk.ISAgent(appData);
+  } catch (errorResp) {
+    console.error('Error initializing ionic agent: ' + errorResp.error);
+  }
+  const agent = response.agent;
 
-    // Create single key.
-    try {
-      response = await agent.createKeys({
-        quantity: 1,
-      })
-    } catch (error) {
-      console.log('Error creating key: ' + error);
-      return;
-    };
-  } catch (error) {
-    console.error('Error initializing ionic agent:' + error);
-  };
+  // Create single key to verify agent.
+  try {
+    response = await agent.createKeys({ quantity: 1 });
+  } catch (errorResp) {
+    console.log('Error creating key: ' + errorResp.error);
+    return;
+  }
 
   const createdKey = response.keys[0];
 
   // Display new key.
   console.log('');
-  console.log(`Created New Key : ${createdKey.keyId}`);
+  console.log('Created New Key : ' + createdKey.keyId);
 };
 
 main();

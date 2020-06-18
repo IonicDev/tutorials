@@ -4,60 +4,67 @@
  * and the Privacy Policy (https://www.ionic.com/privacy-notice/).
  */
     
-/*  
- * WARNING *
- * Calling agent.enrollUser() successfully is a pre-requisite before using this code.
- * This is done when you enrolled your device after signing up for a tenant.
+/*
+ ** PRE-REQUISITES **
+ * 1. A Machina tenant. You can obtain one at: https://ionic.com/start-for-free/.
+ * 2. Your device, in this case the browser, needs to be enrolled. This is done 
+ *    when you enrolled your device after signing up for a tenant. Enrollment 
+ *    can also be accomplished by executing the Enroll Device script at:
+ *    ../../enroll-device/index.html.
  */
 
-// AppData for all Javascript samples: appId, userId, and userAuth needs to be the same
-// as the appData that was used for enrollment.
-const appData = {
-  appId: 'ionic-js-samples',
-  userId: 'developer',
-  userAuth: 'password123',
-  metadata: {
-    'ionic-application-name': 'Javascript Chuck Ciphers Tutorial',
-    'ionic-application-version': '1.3.0'
-  }
-};
+import {getAgentConfig} from '../../jssdkConfig.js';
 
 const main = async () => {
+  
+  // Get the tutorial application data. This assures all tutorials use the same
+  // app ID, user ID and user authentication. It matches what was used for enrollment.
+  const appData = getAgentConfig('Javascript Chunk Ciphers Tutorial');
+  let response;
 
   // Initialize the Machina agent.
   try {
-    const resp = await new window.IonicSdk.ISAgent(appData);
-    const agent = resp.agent;
+    response = await new window.IonicSdk.ISAgent(appData);
+  } catch (errorResp) {
+    console.error('Error initializing ionic agent:' + errorResp);
+    return;
+  }
+  const agent = response.agent;
 
-    /**********************************************************
-     ** SENDER
-     **********************************************************/
-    const message = 'This is a secret message!';
+  /**********************************************************
+   ** SENDER
+   **********************************************************/
+  const message = 'This is a secret message!';
 
-    console.log('');
-    console.log('Plain text:     ' + message);
-  
-    // encrypt data
-    const encryptResponse = await agent.encryptStringChunkCipher({stringData: message});
-    const cipherText = encryptResponse.stringChunk;
-  
-    console.log('Sending Encrypted Text: ' + cipherText);
-  
-    /**********************************************************
-     ** RECEIVER
-     **********************************************************/
-  
-    // decrypt data
-    const decryptResponse = await agent.decryptStringChunkCipher({stringData: cipherText});
-    const decryptedText = decryptResponse.stringChunk;
-  
-    console.log('-----------------------------------------------------------------------------------------------------');
-    console.log('Receiving Encrypted Text: ' + cipherText);
-    console.log('Decrypted Text: ' + decryptedText);
+  console.log('');
+  console.log('Plain text:     ' + message);
 
-  } catch (error) {
-    console.error('Error initializing ionic agent:' + error);
-  };
-}
+  // encrypt data
+  try {
+    response = await agent.encryptStringChunkCipher({stringData: message});
+  } catch (errorResp) {
+    console.error('Error encrypting string:' + errorResp);
+    return;
+  }
+  const cipherText = response.stringChunk;
+
+  console.log('Sending Encrypted Text: ' + cipherText);
+
+  /**********************************************************
+   ** RECEIVER
+   **********************************************************/
+  console.log('-----------------------------------------------------------------------------------------------------');
+  console.log('Receiving Encrypted Text: ' + cipherText);
+
+  // decrypt data
+  try {
+    response = await agent.decryptStringChunkCipher({stringData: cipherText});
+  } catch (errorResp) {
+    console.error('Error decrypting:' + errorResp);
+    return;
+  }
+  const decryptedText = response.stringChunk;
+  console.log('Decrypted Text: ' + decryptedText);
+};
 
 main();
