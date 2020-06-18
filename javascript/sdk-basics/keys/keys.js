@@ -26,7 +26,7 @@ function printKey( text, key ) {
 
 const main = async () => {
 
-  // Get the tutorial application data. This assures all tutorils use the same
+  // Get the tutorial application data. This assures all tutorials use the same
   // app ID, user ID and user authentication. It matches what was used for enrollment.
   const appData = getAgentConfig('Javascript Keys Tutorial');
   let response;
