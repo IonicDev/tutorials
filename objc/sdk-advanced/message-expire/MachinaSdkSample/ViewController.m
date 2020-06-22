@@ -132,21 +132,39 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (NSString *) protectMessage:(NSString *) message error:(NSError **) error {
-        
+- (IonicAgent*) getIonicAgent:(NSError **) error {
+    
     NSError* e = nil;
+    
     // create an agent and initialize it with the password persistor
     IonicAgent * agent = [[IonicAgent alloc] initWithDefaults:self.profilePersistor
                                                         error:&e];
+    
     // check for initialization error
-    if (e)
-    {
+    if (e) {
         IonicLogF_Error(@"MyApplicationChannel", @"Failed to initialize agent object, error code = %d.", e.code);
         *error = e;
         return nil;
     }
-    // initialize a chunk cipher object which will use the agent class for secure communication
-    // with Ionic API servers
+    
+    // set app metadata
+    [agent setMetadataValue:@"ionic-application-name" forField:@"ionic-agents-objc-tutorial"];
+    [agent setMetadataValue:@"ionic-application-version" forField:@"1.0.0"];
+    
+    return agent;
+}
+
+- (NSString *) protectMessage:(NSString *) message error:(NSError **) error {
+        
+    NSError* e = nil;
+    
+    IonicAgent* agent = [self getIonicAgent:&e];
+    if (e) {
+        *error = e;
+        return nil;
+    }
+
+    // initialize a chunk cipher object which will use the agent class for secure communication with Ionic API servers
     IonicChunkCryptoCipherAuto * cipher = [[IonicChunkCryptoCipherAuto alloc] initWithAgent:agent];
     
     // Create key attribute to expire access in in 2 minutes
@@ -155,8 +173,7 @@
     
     // encrypt a sensitive string
     NSString* encryptedMessage = [cipher encryptText:message withAttributes:attributes error:&e];
-    if (e)
-    {
+    if (e) {
         IonicLogF_Error(@"MyApplicationChannel", @"Failed to encrypt message, error code = %d.", e.code);
         *error = e;
         return nil;
@@ -169,23 +186,18 @@
         
     NSError* e = nil;
     
-    // create an agent and initialize it using all defaults
-    IonicAgent * agent = [[IonicAgent alloc] initWithDefaults:self.profilePersistor error:&e];
-    // check for initialization error
-    if (e)
-    {
-        IonicLogF_Error(@"MyApplicationChannel", @"Failed to initialize agent object, error code = %d.", (*error).code);
+    IonicAgent* agent = [self getIonicAgent:&e];
+    if (e) {
         *error = e;
         return nil;
     }
-    // create a file cipher which will use our agent for secure communication
-    // with Ionic API servers
+    
+    // create a chunk cipher which will use our agent for secure communication with Ionic API servers
     IonicChunkCryptoCipherAuto * cipher = [[IonicChunkCryptoCipherAuto alloc] initWithAgent:agent];
     
     // decrypt the cipher text
     NSString* plainTextMessage = [cipher decryptText:protectedMessage error:&e];
-    if (e)
-    {
+    if (e) {
         IonicLogF_Error(@"MyApplicationChannel", @"Failed to decrypt a string, error code = %d.", (*error).code);
         *error = e;
         return nil;

@@ -44,7 +44,7 @@ public class RecipientActivity extends Activity {
         }
 
         String message = getStringFromUri(getIntent().getData());
-        processMessage(message);
+        decodeMessage(message);
     }
 
     private String getStringFromUri(Uri uri) {
@@ -111,7 +111,7 @@ public class RecipientActivity extends Activity {
         });
     }
 
-    private void processMessage(final String receivedMessage) {
+    private void decodeMessage(final String receivedMessage) {
 
         AsyncTask.execute(new Runnable() {
             @Override
@@ -126,6 +126,8 @@ public class RecipientActivity extends Activity {
                     persistor.setPassword(Constants.IONIC_PERSISTOR_PASSWORD);
                     agent.initialize(persistor);
 
+                    agent.setMetadata("ionic-application-name", "ionic-time-based-access-tutorial");
+                    agent.setMetadata("ionic-application-version", "1.0.0");
 
                     final int icon;
                     final String title;
