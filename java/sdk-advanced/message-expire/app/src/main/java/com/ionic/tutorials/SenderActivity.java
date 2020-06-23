@@ -1,4 +1,4 @@
-package com.ionic.machina.sample.ui;
+package com.ionic.tutorials;
 
 import android.app.Activity;
 import android.content.Context;
@@ -28,13 +28,13 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.ionic.machina.sample.BuildConfig;
 import com.ionic.machina.sample.R;
-import com.ionic.machina.sample.ui.login.LoggedInUserView;
-import com.ionic.machina.sample.ui.login.LoginFormState;
-import com.ionic.machina.sample.ui.login.LoginResult;
-import com.ionic.machina.sample.ui.login.LoginViewModel;
-import com.ionic.machina.sample.ui.login.LoginViewModelFactory;
-import com.ionic.machina.sample.utils.Constants;
-import com.ionic.machina.sample.utils.FileUtils;
+import com.ionic.tutorials.ui.login.LoggedInUserView;
+import com.ionic.tutorials.ui.login.LoginFormState;
+import com.ionic.tutorials.ui.login.LoginResult;
+import com.ionic.tutorials.ui.login.LoginViewModel;
+import com.ionic.tutorials.ui.login.LoginViewModelFactory;
+import com.ionic.tutorials.utils.Constants;
+import com.ionic.tutorials.utils.FileUtils;
 import com.ionic.sdk.agent.Agent;
 import com.ionic.sdk.agent.cipher.chunk.ChunkCipherAuto;
 import com.ionic.sdk.agent.cipher.chunk.data.ChunkCryptoEncryptAttributes;

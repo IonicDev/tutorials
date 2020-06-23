@@ -1,4 +1,4 @@
-package com.ionic.machina.sample.ui.login;
+package com.ionic.tutorials.ui.login;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel;
 
 import android.util.Patterns;
 
-import com.ionic.machina.sample.data.LoginRepository;
-import com.ionic.machina.sample.data.Result;
-import com.ionic.machina.sample.data.model.LoggedInUser;
+import com.ionic.tutorials.data.LoginRepository;
+import com.ionic.tutorials.data.Result;
+import com.ionic.tutorials.data.model.LoggedInUser;
 import com.ionic.machina.sample.R;
 
 public class LoginViewModel extends ViewModel {

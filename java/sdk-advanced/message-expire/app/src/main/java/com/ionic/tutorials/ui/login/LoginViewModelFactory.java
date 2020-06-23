@@ -1,11 +1,11 @@
-package com.ionic.machina.sample.ui.login;
+package com.ionic.tutorials.ui.login;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.annotation.NonNull;
 
-import com.ionic.machina.sample.data.LoginDataSource;
-import com.ionic.machina.sample.data.LoginRepository;
+import com.ionic.tutorials.data.LoginDataSource;
+import com.ionic.tutorials.data.LoginRepository;
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

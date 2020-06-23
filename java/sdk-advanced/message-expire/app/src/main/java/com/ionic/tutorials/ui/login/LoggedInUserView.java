@@ -1,4 +1,4 @@
-package com.ionic.machina.sample.ui.login;
+package com.ionic.tutorials.ui.login;
 
 /**
  * Class exposing authenticated user details to the UI.

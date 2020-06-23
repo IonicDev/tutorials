@@ -1,4 +1,4 @@
-package com.ionic.machina.sample.utils;
+package com.ionic.tutorials.utils;
 
 import android.content.Context;
 import android.content.res.AssetManager;

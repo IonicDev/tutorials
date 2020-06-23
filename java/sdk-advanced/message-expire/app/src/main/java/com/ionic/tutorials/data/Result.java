@@ -1,4 +1,4 @@
-package com.ionic.machina.sample.data;
+package com.ionic.tutorials.data;
 
 /**
  * A generic class that holds a result success w/ data or an error exception.

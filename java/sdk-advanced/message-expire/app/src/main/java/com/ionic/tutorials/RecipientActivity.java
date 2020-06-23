@@ -1,4 +1,4 @@
-package com.ionic.machina.sample.ui;
+package com.ionic.tutorials;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 import androidx.annotation.Nullable;
 
 import com.ionic.machina.sample.R;
-import com.ionic.machina.sample.utils.Constants;
+import com.ionic.tutorials.utils.Constants;
 import com.ionic.sdk.agent.Agent;
 import com.ionic.sdk.agent.cipher.chunk.ChunkCipherAuto;
 import com.ionic.sdk.agent.cipher.chunk.data.ChunkCryptoChunkInfo;
