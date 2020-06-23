@@ -1,4 +1,4 @@
-package com.ionic.machina.sample.ui;
+package com.ionic.tutorials;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 import androidx.annotation.Nullable;
 
 import com.ionic.machina.sample.R;
-import com.ionic.machina.sample.utils.Constants;
+import com.ionic.tutorials.utils.Constants;
 import com.ionic.sdk.agent.Agent;
 import com.ionic.sdk.agent.cipher.chunk.ChunkCipherAuto;
 import com.ionic.sdk.agent.cipher.chunk.data.ChunkCryptoChunkInfo;
@@ -44,7 +44,7 @@ public class RecipientActivity extends Activity {
         }
 
         String message = getStringFromUri(getIntent().getData());
-        processMessage(message);
+        decodeMessage(message);
     }
 
     private String getStringFromUri(Uri uri) {
@@ -111,7 +111,7 @@ public class RecipientActivity extends Activity {
         });
     }
 
-    private void processMessage(final String receivedMessage) {
+    private void decodeMessage(final String receivedMessage) {
 
         AsyncTask.execute(new Runnable() {
             @Override
@@ -126,6 +126,8 @@ public class RecipientActivity extends Activity {
                     persistor.setPassword(Constants.IONIC_PERSISTOR_PASSWORD);
                     agent.initialize(persistor);
 
+                    agent.setMetadata("ionic-application-name", "ionic-time-based-access-tutorial");
+                    agent.setMetadata("ionic-application-version", "1.0.0");
 
                     final int icon;
                     final String title;

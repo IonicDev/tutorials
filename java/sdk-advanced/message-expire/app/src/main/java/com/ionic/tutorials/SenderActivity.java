@@ -1,4 +1,4 @@
-package com.ionic.machina.sample.ui;
+package com.ionic.tutorials;
 
 import android.app.Activity;
 import android.content.Context;
@@ -28,13 +28,13 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.ionic.machina.sample.BuildConfig;
 import com.ionic.machina.sample.R;
-import com.ionic.machina.sample.ui.login.LoggedInUserView;
-import com.ionic.machina.sample.ui.login.LoginFormState;
-import com.ionic.machina.sample.ui.login.LoginResult;
-import com.ionic.machina.sample.ui.login.LoginViewModel;
-import com.ionic.machina.sample.ui.login.LoginViewModelFactory;
-import com.ionic.machina.sample.utils.Constants;
-import com.ionic.machina.sample.utils.FileUtils;
+import com.ionic.tutorials.ui.login.LoggedInUserView;
+import com.ionic.tutorials.ui.login.LoginFormState;
+import com.ionic.tutorials.ui.login.LoginResult;
+import com.ionic.tutorials.ui.login.LoginViewModel;
+import com.ionic.tutorials.ui.login.LoginViewModelFactory;
+import com.ionic.tutorials.utils.Constants;
+import com.ionic.tutorials.utils.FileUtils;
 import com.ionic.sdk.agent.Agent;
 import com.ionic.sdk.agent.cipher.chunk.ChunkCipherAuto;
 import com.ionic.sdk.agent.cipher.chunk.data.ChunkCryptoEncryptAttributes;
@@ -141,7 +141,7 @@ public class SenderActivity extends AppCompatActivity {
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
 
-                protectAndSend(usernameEditText.getText().toString(),
+                protectMessage(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
 
                 loadingProgressBar.setVisibility(View.GONE);
@@ -211,7 +211,7 @@ public class SenderActivity extends AppCompatActivity {
         return new File(getFilesDir(), fileName);
     }
 
-    private void protectAndSend(final String email, final String message) {
+    private void protectMessage(final String email, final String message) {
 
         AsyncTask.execute(new Runnable() {
             @Override
@@ -226,12 +226,15 @@ public class SenderActivity extends AppCompatActivity {
                     persistor.setPassword(Constants.IONIC_PERSISTOR_PASSWORD);
                     agent.initialize(persistor);
 
+                    agent.setMetadata("ionic-application-name", "ionic-time-based-access-tutorial");
+                    agent.setMetadata("ionic-application-version", "1.0.0");
+
                     // initialize chunk cipher object
                     ChunkCipherAuto senderCipher = new ChunkCipherAuto(agent);
 
                     // Create key attribute to expire access in in 2 minutes
                     KeyAttributesMap mutableAttributes = new KeyAttributesMap();
-                    mutableAttributes.put("ionic-expiration", Arrays.asList(getExpireDate(1)));
+                    mutableAttributes.put("ionic-expiration", Arrays.asList(getExpireDate(2)));
                     ChunkCryptoEncryptAttributes attr = new ChunkCryptoEncryptAttributes(mutableAttributes);
 
                     // encrypt using the key attributes

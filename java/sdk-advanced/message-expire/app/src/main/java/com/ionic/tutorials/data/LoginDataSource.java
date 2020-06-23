@@ -1,6 +1,6 @@
-package com.ionic.machina.sample.data;
+package com.ionic.tutorials.data;
 
-import com.ionic.machina.sample.data.model.LoggedInUser;
+import com.ionic.tutorials.data.model.LoggedInUser;
 
 import java.io.IOException;
 
