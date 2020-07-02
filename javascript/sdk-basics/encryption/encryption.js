@@ -48,8 +48,8 @@ const main = async () => {
   /**********************************************************
    ** SENDER
    **********************************************************/
-  const message = 'This is a secret message!'
-  //const message = 'Це таємне повідомлення!';
+  // Let's do an UTF-8 test.
+  const message = 'This is a secret message! in Ukrainian: Це таємне повідомлення!';
 
   console.log('Plain text:     ' + message);
 
@@ -79,8 +79,7 @@ const main = async () => {
   try {
     response = await agent.decryptBytesChunkCipher({
       chunkArrayBuffer: new TextEncoder().encode(cipherText),
-      cipher: 'V2',
-      tag: createdKey.keyId
+      cipher: 'V2'
       });
   } catch (errorResp) {
     console.error('Error decrypting:' + errorResp);
