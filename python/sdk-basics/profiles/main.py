@@ -8,7 +8,7 @@ import os
 import sys
 import ionicsdk
 
-source_dir = 'github-tutorials/python/sdk-basics/profiles'
+source_dir = 'python/sdk-basics/profiles'
 this_dir = os.getcwd()
 
 # run only from source directory
