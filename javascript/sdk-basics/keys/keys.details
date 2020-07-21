@@ -1,9 +1,14 @@
+*/
+---
 name: Machina Keys Tutorial
 description: Shows how to create, fetch, and update Machina keys.
 authors:
   - Ionic Security
 resources:
-  - https://github.com/rehrhart/tutorials/blob/master/javascript/sdk-basics/keys/index.html
-  - https://github.com/rehrhart/tutorials/blob/master/javascript/sdk-basics/keys/keys.js
-  - https://github.com/rehrhart/tutorials/blob/master/javascript/consoleReroute.js
+  - javascript/consoleReroute.js
+...
+*/
 
+<p>
+  This demo shows you how to create, fetch, and updated Machina keys.
+</p>
