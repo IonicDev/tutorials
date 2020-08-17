@@ -4,7 +4,7 @@
 # By using this code, I agree to the Terms & Conditions (https://dev.ionic.com/use.html)
 # and the Privacy Policy (https://www.ionic.com/privacy-notice/).
 
-# comment: use command ./default.sh
+# comment: use command ./default-persistor.sh
 
 # Configure this script to exit when any command fails
 set -e
