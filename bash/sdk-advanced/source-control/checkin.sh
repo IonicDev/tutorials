@@ -34,7 +34,7 @@ do
   API_KEY=$(sed -e 's/^"//' -e 's/"$//' <<<"$API_KEY")
 
   # Encrypt each API_KEY (The key is automatically created)
-  ENCRYPTED_API_KEY=$(ionicsdk --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
+  ENCRYPTED_API_KEY=$(machina --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
       chunk encrypt -s "${API_KEY}" --metas "${ClientMetadata}")
 
   replace='s#'${API_KEY}'#'${ENCRYPTED_API_KEY}'#'

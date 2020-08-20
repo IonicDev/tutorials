@@ -34,7 +34,7 @@ do
   ENCRYPTED_API_KEY=$(sed -e 's/^"//' -e 's/"$//' <<<"$ENCRYPTED_API_KEY")
 
   # Decrypt a string (The correlating key is automatically fetched)
-  API_KEY=$(ionicsdk --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
+  API_KEY=$(machina --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
       chunk decrypt -s "${ENCRYPTED_API_KEY}" --metas "${ClientMetadata}")
 
   replace='s#'${ENCRYPTED_API_KEY}'#'${API_KEY}'#'
