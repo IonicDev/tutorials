@@ -44,3 +44,5 @@ do
   echo "Detected plain text API key and replaced it with: "${ENCRYPTED_API_KEY}
 
 done
+
+git add ./google-services.json
