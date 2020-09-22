@@ -1,4 +1,4 @@
-# Machina Javascript Tutorials
+# Machina JavaScript Tutorials
 
 You will need a Machina instance to execute these tutorials.  You can create a Machina instance from our [Machina Developers Portal](https://dev.ionic.com) by clicking on the *"Start For Free*" link. You will receive an e-mail which contains your keyspace, tenant ID, and user name (e-mail).  Please save these for future use.
 
@@ -10,7 +10,7 @@ All the tutorials can be executed in the browser from [Machina Developers Portal
 
 ## Executing Tutorials in Local Web Server
 
-To run the Machina Javascript tutorials in a local web server, you will need to:
+To run the Machina JavaScript tutorials in a local web server, you will need to:
 
 **Step 1**: Clone Ionic tutorials repo from Github.
 
@@ -30,13 +30,13 @@ node http-server
 After the http server has been started, use a Chrome or Firefox browser.
 
 1. Go to URL: `http: 127.0.0.1:8080`. This should bring up an index page.
-2. Under the "*Machina Javascript Create Device Credentials*" heading, click:
+2. Under the "*Machina JavaScript Create Device Credentials*" heading, click:
 
 * Enroll Device
 
 You will need your Machina Console e-mail address and password to complete the enrollment form.
 
-Enroll-device will only create device credentials. You can read more about enrollment in the [Javascript documentation](https://dev.ionic.com/sdk_docs/ionic_platform_sdk/javascript/latest/index.html). 
+Enroll-device will only create device credentials. You can read more about enrollment in the [JavaScript documentation](https://dev.ionic.com/sdk_docs/ionic_platform_sdk/javascript/latest/index.html). 
 
 **Note:** Failure to find any profiles may indicate that the device credentials were not created; or that the specified parameters aren't a match to those used during enrollment.
 
@@ -45,11 +45,11 @@ Enroll-device will only create device credentials. You can read more about enrol
 * [Keys](https://dev.ionic.com/tutorials/sdk-basics/keys?language=javascript)
 * [Ionic Ciphers](https://dev.ionic.com/tutorials/sdk-basics/ionic-ciphers?language=javascript)
 
-***Note:*** Make sure the Javascript language square is clicked.
+***Note:*** Make sure the JavaScript language square is clicked.
 
 ## Tips
 
-There is a Javascript file, `consoleReroute.js` that tees `console.log()` to the Javascript console and to the an output area to be displayed in the browser.  Calling `console.log('') initializes the output area with the a fixed font and grey background.
+There is a JavaScript file, `consoleReroute.js` that tees `console.log()` to the JavaScript console and to the an output area to be displayed in the browser.  Calling `console.log('') initializes the output area with the a fixed font and grey background.
 
 ## Documentation
-The Javascript SDK documentation is located [here](https://dev.ionic.com/sdk_docs/ionic_platform_sdk/javascript/latest/index.html).
+The JavaScript SDK documentation is located [here](https://dev.ionic.com/sdk_docs/ionic_platform_sdk/javascript/latest/index.html).

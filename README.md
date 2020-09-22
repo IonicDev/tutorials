@@ -3,7 +3,7 @@ To run the tutorials in this repository, you need to have a Machina tenant. Obta
 
 This repository is used in conjunction with [Machina Tutorials](https://dev.ionic.com/tutorials) where there are explanations for each tutorial.  A learning order is suggested there.
 
-The tutorials are in C++, C#, Java, Javascript, and Python. Tutorials are first organized by
+The tutorials are in C++, C#, Java, JavaScript, and Python. Tutorials are first organized by
 languages and then by complexity.  There are two tutorial levels: sdk-basics, and sdk-advanced.
 Not all tutorials are available all languages.
 
