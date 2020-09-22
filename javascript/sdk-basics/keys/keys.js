@@ -28,7 +28,7 @@ const main = async () => {
 
   // Get the tutorial application data. This assures all tutorials use the same
   // app ID, user ID and user authentication. It matches what was used for enrollment.
-  const appData = getAgentConfig('Javascript Keys Tutorial');
+  const appData = getAgentConfig('JavaScript Keys Tutorial');
   let response;
 
   // Initialize the Machina agent.
