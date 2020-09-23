@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['refid_1055',['RefId',['../class_ionic_security_1_1_s_d_k_1_1_create_keys_request_1_1_key.html#a1fffea107658b559c436e3245420eaea',1,'IonicSecurity::SDK::CreateKeysRequest::Key::RefId()'],['../class_ionic_security_1_1_s_d_k_1_1_create_keys_response_1_1_key.html#a9f2e14c297f57516f577479d3c644b94',1,'IonicSecurity::SDK::CreateKeysResponse::Key::RefId()'],['../class_ionic_security_1_1_s_d_k_1_1_get_resources_request_1_1_resource.html#a43f854fe2a02c37800deaa76e0cbbf47',1,'IonicSecurity::SDK::GetResourcesRequest::Resource::RefId()'],['../class_ionic_security_1_1_s_d_k_1_1_get_resources_response_1_1_resource.html#a3d104a5623fbeac14714e93a9b36d032',1,'IonicSecurity::SDK::GetResourcesResponse::Resource::RefId()']]],
-  ['resourceid_1056',['ResourceId',['../class_ionic_security_1_1_s_d_k_1_1_get_resources_request_1_1_resource.html#a44fa71873fb9675a501e840209be9f6e',1,'IonicSecurity::SDK::GetResourcesRequest::Resource']]],
-  ['resources_1057',['Resources',['../class_ionic_security_1_1_s_d_k_1_1_get_resources_request.html#ad638cf32cc01b813c1fd45bf54c3ebef',1,'IonicSecurity::SDK::GetResourcesRequest::Resources()'],['../class_ionic_security_1_1_s_d_k_1_1_get_resources_response.html#a71a4655484e5e060d6d52538613e3ca7',1,'IonicSecurity::SDK::GetResourcesResponse::Resources()']]]
-];
