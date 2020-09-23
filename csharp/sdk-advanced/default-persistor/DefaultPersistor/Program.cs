@@ -5,7 +5,6 @@
  */
 
 using System;
-using System.Collections.Generic;
 using IonicSecurity.SDK;
 
 
@@ -26,11 +25,10 @@ namespace Samples
 
         static void Main(string[] args)
         {
-           // Create an agent object to talk to Ionic.
-           Agent agent = new Agent();
-
             try
             {
+                // Create an agent object to talk to Ionic.
+                Agent agent = new Agent();
                 agent.SetMetadata(Agent.MetaApplicationName, "DefaultPersistor Sample");
                 agent.Initialize();
             }
@@ -48,17 +46,16 @@ namespace Samples
             string encryptedText = null;
 
             // Define data markings
-            AttributesDictionary attributes = new AttributesDictionary();
-            attributes.Add("clearance-level", new List<string> { "secret" });
-	    ChunkCryptoEncryptAttributes dataMarkings = new ChunkCryptoEncryptAttributes(attributes);
+            AttributesDictionary dataMarkings = new AttributesDictionary();
+            dataMarkings.Add("clearance-level", new List<string> { "secret" });
 
             // Encrypt the string using an Ionic-managed key.
-            chunkCrypto.Encrypt(clearText, ref encryptedText, ref dataMarkings);
+            chunkCrypto.Encrypt(clearText, ref encryptedText, dataMarkings);
 
             string decryptedText = null;
 
             // Note: Decryption only works if the policy allows it.
-            chunkCrypto.Decrypt(encryptedText, ref decryptedText);
+            chunkCrypto.Decrypt(encryptedText, decryptedText);
 
             Console.WriteLine("Plain Text: {0}", clearText);
             Console.WriteLine("Ionic Chunk Encrypted Text: {0}", encryptedText);

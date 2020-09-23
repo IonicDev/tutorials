@@ -15,7 +15,6 @@ target/
 Debug/
 Release/
 obj/
-Doc/
 
 # C++
 Makefile
