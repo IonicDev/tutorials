@@ -1,0 +1,328 @@
+<h1>Ionic Internal Client SDK Changelog for .NET on Windows</h1>
+<p>Generated on 2020-07-02 12:23:26 EDT.</p>
+
+<p>This project follows <a href="http://semver.org/">semantic versioning</a>.</p>
+
+<br/>
+
+<h2>Version 2.0.0</h2>
+
+<h4>Release</h4>
+<ul>
+<li>Release</li>
+</ul>
+
+<h4>Added</h4>
+<ul>
+<li>C#/.NET - publish SDK package to NuGet.org package manager</li>
+<li>Make SDK device fingerprinting optional</li>
+<li>C#/.NET - Expose cryptoutils utility functions</li>
+<li>DNS lookups for Keyspace Name Service (preparatory)</li>
+<li>HTML metatag - doxygen post processor</li>
+<li>SDK wrappers - HTML metatag - doxygen post processor</li>
+<li>Add an interface to modify Portion Marking classifications</li>
+<li>ISCrossPlatform could use an isDirectory function</li>
+<li>add 'setFingerprint()' API to Agent; user supplies fingerprint</li>
+</ul>
+
+<h4>Changed</h4>
+<ul>
+<li>Allow Portion Marked files to be edited even without permissions</li>
+<li>Update Boost library to latest</li>
+<li>Update Catch library to latest</li>
+<li>Update Curl library to latest</li>
+<li>Update JSON Spirit library to latest</li>
+<li>Update libicu to latest</li>
+<li>Update libxml2 to latest</li>
+<li>Update zLib / libzip to latest</li>
+<li>ensure all SDK build nodes are on doxygen 1.8.18</li>
+<li>Update cryptopp to latest</li>
+<li>Core - update all SDK endpoints to v2.4</li>
+<li>IV for Core SDK embeds a global counter</li>
+</ul>
+
+<h4>Fixed</h4>
+<ul>
+<li>C++ - Update invalid reference to ISCRYPTO_RSA_SEED_OVERFLOW</li>
+<li>Allow no AAD for AES GCM (fips changes)</li>
+<li>Fix portion marking color being sent as a classification</li>
+<li>SecretShare unexpected Encryption fail with bad JSON path</li>
+</ul>
+
+<h2>Version 1.8.0</h2>
+
+<h4>Release</h4>
+<ul>
+<li>Release</li>
+</ul>
+
+<h4>Added</h4>
+<ul>
+<li>Documentation Nice-to-Haves for Omissions/Parity</li>
+<li>Add documentation for Windows-specific DllMain usage limitation</li>
+<li>Verify agent.clone() implemented in wrappers</li>
+<li>new Agent constructor passing 1 String argument (SEP JSON)</li>
+<li>KNS - Lookup by domain provided by caller</li>
+<li>KNS - Add method to change active profiles server URL</li>
+<li>Doc - Sample to show KNS/HTTP use cases</li>
+<li>core SDK wrappers - new Agent constructor passing 1 String argument (SEP JSON)</li>
+</ul>
+
+<h4>Changed</h4>
+<ul>
+<li>Move buffer-safe functions like is_strcpy (ISCryptoDLL.cpp) to common module</li>
+<li>Remove deprecated code from 'C' lib and have the 'C' lib link directly to the 'C++' lib instead of ISAgentSDKInternal</li>
+<li>Core/Wrappers: Update Log Config Example docs to be language-specific</li>
+<li>internal refactoring in anticipation of alternate KeyServices implementation</li>
+<li>IonicException improvements</li>
+</ul>
+
+<h4>Fixed</h4>
+<ul>
+<li>Make CSV ignore minor version number changes</li>
+<li>Bring consistency to ISFileCryptoCiphers with respect to encrypting already encrypted file/buffers</li>
+<li>Core: ISLogConfig 'maxAgeSeconds' field name is too limited</li>
+<li>Error Code 10004</li>
+<li>Windows HTTP library fails on non-utf8 (really non-ascii) get/post</li>
+<li>C#/.NET: Documentation Issues</li>
+<li>Enrollment on a new machine fails when the proper directories do not exist</li>
+<li>ionicsdk does not handle SEPs with trailing slash</li>
+<li>C++: Persistor/KeyVault Locking is leaving stale .lock files</li>
+<li>ISAgent.getKeyspace() shouldn't require an active (or any) profile</li>
+<li>C#/.NET: Example corrections in 'AgentKeyServices Implementors Overview'</li>
+<li>CPP: intermittent segfault when server returns 502</li>
+<li>CPP: retcode 32766 on getDecryptStream on Mac</li>
+<li>problems in doc for GetKeyspaceResponse</li>
+<li>Update boost library consumed by SDK and published with SDKInternal to one that is tested compatible with VS2015</li>
+<li>create crypto function to check available entropy</li>
+<li>Generic v1.3 ability to truncate a file</li>
+<li>Add Keepalive option to curl implementation of ISHTTP</li>
+<li>Update copyright block in SDK</li>
+<li>More optimization work needed for Generic v1.3 fstream mode (read/write)</li>
+<li>Improve handling of entropy exhaustion</li>
+<li>Doc - Need to specify default cipher for chunkcipher</li>
+<li>C#/.NET: Nomenclature Correction in Overviews</li>
+<li>Python Doxygen files parity with other language wrappers</li>
+</ul>
+
+<h4>Removed</h4>
+<ul>
+<li>Remove ISCryptoSecureContainer class and ISCryptoScopedSecureClearer</li>
+</ul>
+
+<h2>Version 1.7.2</h2>
+
+<h4>Added</h4>
+<ul>
+<li>New SEO header HTML in the Core SDK wrapper libraries</li>
+</ul>
+
+<h4>Fixed</h4>
+<ul>
+<li>Doc footer copyright year</li>
+<li>Inconsistent Meta Description SEO values for .NET and Python</li>
+</ul>
+
+<h2>Version 1.7.0</h2>
+
+<h4>Added</h4>
+<ul>
+<li>ISFileCryptoCipherOpenXML interface for cover page marking</li>
+<li>Custom Encrypted File test for C++ Key Vaults</li>
+<li>Max Age Limit - ISO 8601 duration - ISLog JSON configuration</li>
+<li>Random seek encrypt/decrypt in Generic 1.3 file cipher</li>
+<li>External signature for SDK library file hash</li>
+<li>ISFileCryptoCipherPdf interface for cover page marking</li>
+</ul>
+
+<h4>Changed</h4>
+<ul>
+<li>Limit size/age of SDK log file set</li>
+<li>ISLog help updated with options for controlling file space and age</li>
+<li>Update ISLog documentation JSON examples and tables for latest features</li>
+</ul>
+
+<h4>Fixed</h4>
+<ul>
+<li>Expose ProfilePersistor v1.1 to wrapped SDKs</li>
+<li>C# - KeyVaultKey doesn't support mutableAttributes</li>
+<li>PDF cipher error on GetFileInfo when the PDF file has external PDF Encryption</li>
+<li>C++ - Error logged - stream not reset on getFileInfo clear XLSX input</li>
+<li>OpenXML file encryption should set fail bit on output stream when a temp RAM buffer fills</li>
+<li>Generic v1.3 - Error when using the read/write IO interface and reading past an encryption block</li>
+<li>ISKeyVaultBase logic error</li>
+<li>FileCryptoCipherOpenXml to write temp files into platform temp directory</li>
+<li>CSV decryption fails on a certain size file</li>
+<li>Generic v1.3 - preserve write timestamp on file read</li>
+<li>Generic v1.3 - ability to force flush to file</li>
+</ul>
+
+<h2>Version 1.6.1</h2>
+
+<h2>Version 1.6.0</h2>
+
+<h4>Added</h4>
+<ul>
+<li>SDK Key Services support automatic SEP lookup for non-active keyspace</li>
+<li>Added TLS error codes on requests that fail due to TLS errors</li>
+<li>SDK Documentation update for 1000 key request limit</li>
+<li>SDK Log callback mechanism added</li>
+<li>Added method to detect and destroy corrupted key vaults</li>
+<li>New Persistor format containing optional SALT</li>
+<li>New create key simulation mode</li>
+<li>Streamable Generic Cipher</li>
+<li>Streamable CSV Cipher</li>
+<li>New Generic Stream Cipher version 1_3</li>
+<li>Streamable PDF Cipher</li>
+<li>Streamable OpenXML Cipher</li>
+<li>Default Windows persistor Roaming support</li>
+<li>Migrate custom doc properties in OpenXML</li>
+</ul>
+
+<h4>Fixed</h4>
+<ul>
+<li>SDK getFileInfo consumes memory</li>
+<li>Error when requesting multiple updates on same key id</li>
+</ul>
+
+<h2>Version 1.5.0</h2>
+
+<h4>Added</h4>
+<ul>
+<li>Documentation updates across all sdk languages.</li>
+<li>Added DeviceProfilePersistorWindows to NET wrapper SDK</li>
+</ul>
+
+<h4>Changed</h4>
+<ul>
+<li>Modified ISCryptoBytes to derive from new SecureAllocator class to fix bugs in heap management</li>
+</ul>
+
+<h4>Fixed</h4>
+<ul>
+<li>Api calls now reset stream pointers on error</li>
+<li>SDK generated temporary files no longer use tilde due to incompatibility with network based storage</li>
+<li>Missing Access Denied cover pages for CSV</li>
+</ul>
+
+<h2>Version 1.4.0</h2>
+
+<h4>Added</h4>
+<ul>
+<li>Provide an indication of SDK version with all communications between SDK and Ionic.com.</li>
+<li>SecretShare Persistor in NET.</li>
+</ul>
+
+<h2>Version 1.3.0</h2>
+
+<h4>Added</h4>
+<ul>
+<li>Added mutable key attribute support to KeyServices APIs.</li>
+<li>Added external-id support to the KeyServices APIs.</li>
+<li>Updated NET runtime to 4.X for VS2015 support.</li>
+</ul>
+
+<h4>Fixed</h4>
+<ul>
+<li>Fixed issue with using wide characters or non-ascii as key attribute values.</li>
+<li>Fixed issue with encrypting large file sizes now return proper value and log an error.</li>
+</ul>
+
+<h2>Version 1.2.1</h2>
+
+<h4>Fixed</h4>
+<ul>
+<li>Fixed an issue in which AutoFileCipher would not apply custom cover pages defined via ISFileCryptoCoverPageServices.</li>
+</ul>
+
+<h2>Version 1.2.0</h2>
+
+<h4>Added</h4>
+<ul>
+<li>Introduced the ability to override the default Cover Pages used by the FileCrypto classes through ISFileCryptoCoverPageServices.</li>
+<li>The SDK now supports non-persistent  VDI.  Previously, the default SEP storage mechanism did not function in these environments.</li>
+</ul>
+
+<h4>Fixed</h4>
+<ul>
+<li>An issue with parsing encrypted PDFs which have had their XMP attributes modified has been fixed.</li>
+</ul>
+
+<h2>Version 1.0.0</h2>
+
+<h4>Added</h4>
+<ul>
+<li>A BETA Ionic SDK for Python is now available.</li>
+<li>Added a new method Agent::getDeviceProfileForKeyId().  If using multiple device profiles, this routine is helpful for determing the appropriate profile for a given key ID.</li>
+</ul>
+
+<h4>Changed</h4>
+<ul>
+<li>The Ionic SDK has been incremented to Version 1.0.0!</li>
+<li>The SDK now communicates with v2.3 of the Ionic key creation and retrieval server APIs.  This update includes minor security improvements and causes no functional changes to SDK interfaces.</li>
+<li>The default key size for Agent::CreateDevice() has been updated to 3072 in line with FIPS compliance of crypto functionality.</li>
+</ul>
+
+<h4>Fixed</h4>
+<ul>
+<li>Fixed an issue in which handling PDFs which contain certain special characters cause an exception to be thrown unexpectedly.  These problematic PDFs are now parsed correctly.</li>
+</ul>
+
+<h2>Version 0.5.0</h2>
+
+<h4>Added</h4>
+<ul>
+<li>Added a new Ionic data standard for encrypting e-mail using CMS for use with S/MIME.</li>
+</ul>
+
+<h2>Version 0.4.0</h2>
+
+<h4>Added</h4>
+<ul>
+<li>Added a simplified method LogFactory::CreateSimple() to enable logging.</li>
+</ul>
+
+<h4>Deprecated</h4>
+<ul>
+<li>The ability to initialize an Agent object from a configuration file has been deprecated.  The Agent::InitializeFromFile() routines will be removed in a future release of the SDK.</li>
+</ul>
+
+<h4>Fixed</h4>
+<ul>
+<li>Fixed an issue encrypting files in-place on Windows network drives when using a UNC path.</li>
+</ul>
+
+<h2>Version 0.3.1</h2>
+
+<h2>Version 0.3.0</h2>
+
+<h4>Changed</h4>
+<ul>
+<li>Updated all OpenXML and PDF cover pages for aesthetics and usability.</li>
+</ul>
+
+<h2>Version 0.2.0</h2>
+
+<h4>Changed</h4>
+<ul>
+<li>Updated all OpenXML cover pages for aesthetics and usability.</li>
+</ul>
+
+<h2>Version 0.1.1</h2>
+
+<h4>Changed</h4>
+<ul>
+<li>Updated PDF file cipher to support additional PDF file formats.</li>
+</ul>
+
+<h4>Fixed</h4>
+<ul>
+<li>Stopped exporting private internal library symbols, which could cause crashing at runtime when conflicting with the same symbols in an application using the SDK.</li>
+<li>Fixed memory leak in HTTP transport layer.</li>
+</ul>
+
+<h2>Version 0.1.0</h2>
+
+<h4>Added</h4>
+<ul>
+<li>First official version of the Ionic SDK!</li>

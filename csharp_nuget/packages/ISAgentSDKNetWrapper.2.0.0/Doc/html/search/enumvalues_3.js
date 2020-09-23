@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['keyvault_5fcreate_5fpath_925',['KEYVAULT_CREATE_PATH',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8a207b94f4fa7536d83c8c281b2ed4b23c',1,'IonicSecurity::SDK']]],
+  ['keyvault_5feof_926',['KEYVAULT_EOF',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8aed29221e3d3c2354037df6a5b039ccf2',1,'IonicSecurity::SDK']]],
+  ['keyvault_5ferror_927',['KEYVAULT_ERROR',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8acf21adada17fb6d5fed94f6897f5d2cb',1,'IonicSecurity::SDK']]],
+  ['keyvault_5ferror_5fbase_928',['KEYVAULT_ERROR_BASE',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8ac6850ff0d5d10c7d355e0cb6ca376c3b',1,'IonicSecurity::SDK']]],
+  ['keyvault_5ffile_5fversion_929',['KEYVAULT_FILE_VERSION',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8a5ce102dee251827c44d3eccc031afce7',1,'IonicSecurity::SDK']]],
+  ['keyvault_5fheader_5fmismatch_930',['KEYVAULT_HEADER_MISMATCH',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8ad22ca0afdb8dd495bb708872c5f6c6b1',1,'IonicSecurity::SDK']]],
+  ['keyvault_5finvalid_5fkey_931',['KEYVAULT_INVALID_KEY',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8ab9399251b2fb00ab78c3b12341bf58a2',1,'IonicSecurity::SDK']]],
+  ['keyvault_5finvalidvalue_932',['KEYVAULT_INVALIDVALUE',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8a88c52651b08ce7d0c4abcec0b6e11224',1,'IonicSecurity::SDK']]],
+  ['keyvault_5fkey_5fnot_5ffound_933',['KEYVAULT_KEY_NOT_FOUND',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8a7b37e9caa849d238a46048e32b063505',1,'IonicSecurity::SDK']]],
+  ['keyvault_5fkey_5fupdate_5fignored_934',['KEYVAULT_KEY_UPDATE_IGNORED',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8a1155dd84f1e967ccfa73f763c84131fe',1,'IonicSecurity::SDK']]],
+  ['keyvault_5fload_5fnot_5fneeded_935',['KEYVAULT_LOAD_NOT_NEEDED',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8a31f85f6e78f6cb5662f08270a50508d3',1,'IonicSecurity::SDK']]],
+  ['keyvault_5fmissingvalue_936',['KEYVAULT_MISSINGVALUE',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8aa60f71374922d7469875ce53c5d430d5',1,'IonicSecurity::SDK']]],
+  ['keyvault_5fnoheader_937',['KEYVAULT_NOHEADER',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8ad166b4e2a116c9d0bfd3336f699a7094',1,'IonicSecurity::SDK']]],
+  ['keyvault_5fnomemory_938',['KEYVAULT_NOMEMORY',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8a260ef859d91cb986d96996d961917807',1,'IonicSecurity::SDK']]],
+  ['keyvault_5fok_939',['KEYVAULT_OK',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8affa63b651765aff863e553b5ccaeffca',1,'IonicSecurity::SDK']]],
+  ['keyvault_5fopenfile_940',['KEYVAULT_OPENFILE',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8a9323b0c2f7bb5bbc7ca97fc07044497f',1,'IonicSecurity::SDK']]],
+  ['keyvault_5fparsefailed_941',['KEYVAULT_PARSEFAILED',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8ac8e0db97388486b43ba1454b1cc6c51f',1,'IonicSecurity::SDK']]],
+  ['keyvault_5fresource_5fnot_5ffound_942',['KEYVAULT_RESOURCE_NOT_FOUND',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8a4cea8d5c834ec27d07080a018340dcc0',1,'IonicSecurity::SDK']]],
+  ['keyvault_5funknown_943',['KEYVAULT_UNKNOWN',['../group___error_codes.html#ggadc2defd6464e814121fc84c36e43daa8a13d7a513a9c935d49ff0ae24d9a14179',1,'IonicSecurity::SDK']]]
+];

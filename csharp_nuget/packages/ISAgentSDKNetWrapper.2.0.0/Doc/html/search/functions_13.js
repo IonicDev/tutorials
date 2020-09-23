@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['verify_805',['Verify',['../class_ionic_security_1_1_s_d_k_1_1_signature_processor_abstract.html#a4cc79a43bbe10579bf8b36d1389c29a3',1,'IonicSecurity::SDK::SignatureProcessorAbstract::Verify(array&lt; System::Byte &gt;^ mpbyMessage, array&lt; System::Byte &gt;^ mpbySignatureIn)'],['../class_ionic_security_1_1_s_d_k_1_1_signature_processor_abstract.html#a2a381627213a6dd4f0b341052c60b0ef',1,'IonicSecurity::SDK::SignatureProcessorAbstract::Verify(const String^ mwsMessage, array&lt; System::Byte &gt;^ mpbArraySignatureIn)']]],
+  ['verifyfrombase64_806',['VerifyFromBase64',['../class_ionic_security_1_1_s_d_k_1_1_signature_processor_abstract.html#ae5a7fc6e990632ffe20ed914b92ede20',1,'IonicSecurity::SDK::SignatureProcessorAbstract::VerifyFromBase64(const String^ mwsMessage, String^ mwsBase64SignatureIn)'],['../class_ionic_security_1_1_s_d_k_1_1_signature_processor_abstract.html#a297147134303219b99020f918ef781c1',1,'IonicSecurity::SDK::SignatureProcessorAbstract::VerifyFromBase64(array&lt; System::Byte &gt;^ mpbyMessage, String^ mwsBase64SignatureIn)']]]
+];
