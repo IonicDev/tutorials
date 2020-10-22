@@ -33,15 +33,18 @@ do
   # Remove quotes
   API_KEY=$(sed -e 's/^"//' -e 's/"$//' <<<"$API_KEY")
 
-  # Encrypt each API_KEY (The key is automatically created)
-  ENCRYPTED_API_KEY=$(machina --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
-      chunk encrypt -s "${API_KEY}" --metas "${ClientMetadata}")
+  # Skip if the API_KEY is already a Machina protected string
+  if [[ $API_KEY != ~!?!*!*! ]]; then
 
-  replace='s#'${API_KEY}'#'${ENCRYPTED_API_KEY}'#'
+    # Encrypt each API_KEY (The key is automatically created)
+    ENCRYPTED_API_KEY=$(machina --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
+        chunk encrypt -s "${API_KEY}" --metas "${ClientMetadata}")
 
-  sed -i '' "${replace}" ./google-services.json
+    replace='s#'${API_KEY}'#'${ENCRYPTED_API_KEY}'#'
 
-  echo "Detected plain text API key and replaced it with: "${ENCRYPTED_API_KEY}
+    sed -i '' "${replace}" ./google-services.json
+    echo "Detected plain text API key and replaced it with: "${ENCRYPTED_API_KEY}
+  fi
 
 done
 
