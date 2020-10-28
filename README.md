@@ -17,8 +17,12 @@ Not all tutorials are available all languages.
 
 ## Advanced SDK Tutorials
 
+* Default Persistors - Create a default persistor and use it. (No Java or JavaScript)
+* Downloading Profiles - Learn how to download a profile from the dashboard. (No JavaScript)
 * Raw Crypto Cypher - Create a custom cipher using Machina crypto library. (Only in C++)
 * Bulk File Encryption - Use extendible key services interface for large encrypt operations.  (Only in C++)
+* Source Control Hooks - Add a GitHub hook to encrypt/decrypt the API key before each commit. (Only in bash)
+* Time based access - Learn how to create an expriration time policy.  (Only in Java, Obj-c, and bash)
 
 ## Error and Enhancement Reporting
 Since this repository is tied directly to Machina Developers Portal, we do not take pull requests for this repository. However, you may open an issue to provide feedback for corrections, fixes and suggestions for enhancement.

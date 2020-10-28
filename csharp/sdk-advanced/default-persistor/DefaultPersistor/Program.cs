@@ -1,16 +1,17 @@
 ﻿/*
- * (c) 2018-2020-2019 Ionic Security Inc.
+ * (c) 2018-2020 Ionic Security Inc.
  * By using this code, I agree to the Terms & Conditions (https://dev.ionic.com/use.html)
  * and the Privacy Policy (https://www.ionic.com/privacy-notice/).
  */
 
 using System;
+using System.Collections.Generic;
 using IonicSecurity.SDK;
 
 
 namespace Samples
 {
-    class IonicHelloworld
+    class DefaultPersistor
     {
         // Waits for any input for console applications.
         // This allows information to be displayed before the
@@ -25,11 +26,12 @@ namespace Samples
 
         static void Main(string[] args)
         {
+            // Create an agent object to talk to Ionic.
+            Agent agent = new Agent();
+
             try
             {
-                // Create an agent object to talk to Ionic.
-                Agent agent = new Agent();
-                agent.SetMetadata(Agent.MetaApplicationName, "DefaultPersistor Sample");
+                agent.SetMetadata(Agent.MetaApplicationName, "C# DefaultPersistor Sample");
                 agent.Initialize();
             }
             catch (SdkException sdkExp)
@@ -46,16 +48,17 @@ namespace Samples
             string encryptedText = null;
 
             // Define data markings
-            AttributesDictionary dataMarkings = new AttributesDictionary();
-            dataMarkings.Add("clearance-level", new List<string> { "secret" });
+            AttributesDictionary attributes = new AttributesDictionary();
+            attributes.Add("clearance-level", new List<string> { "secret" });
+	    ChunkCryptoEncryptAttributes dataMarkings = new ChunkCryptoEncryptAttributes(attributes);
 
             // Encrypt the string using an Ionic-managed key.
-            chunkCrypto.Encrypt(clearText, ref encryptedText, dataMarkings);
+            chunkCrypto.Encrypt(clearText, ref encryptedText, ref dataMarkings);
 
             string decryptedText = null;
 
             // Note: Decryption only works if the policy allows it.
-            chunkCrypto.Decrypt(encryptedText, decryptedText);
+            chunkCrypto.Decrypt(encryptedText, ref decryptedText);
 
             Console.WriteLine("Plain Text: {0}", clearText);
             Console.WriteLine("Ionic Chunk Encrypted Text: {0}", encryptedText);
