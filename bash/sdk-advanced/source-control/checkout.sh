@@ -34,7 +34,7 @@ do
   ENCRYPTED_API_KEY=$(sed -e 's/^"//' -e 's/"$//' <<<"$ENCRYPTED_API_KEY")
 
   # Skip if the API key is empty
-  if [ ! -z "$API_KEY" ]; then
+  if [ ! -z "$ENCRYPTED_API_KEY" ]; then
 
     # Decrypt a string (The correlating key is automatically fetched)
     API_KEY=$(machina --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
