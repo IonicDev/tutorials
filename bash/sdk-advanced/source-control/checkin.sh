@@ -26,7 +26,7 @@ set -e
 ClientMetadata="ionic-application-name:Source-Control-Demo,ionic-application-version:1.0.0"
 
 # Create an array containing each API key that needs to be protected
-array=( $(cat ./google-services.json | jq '(.client[].api_key[].current_key)') )
+array=( $(cat ./src/external-services.json | jq '(.openWeatherMap.apiKey)') )
 
 for API_KEY in ${array[@]}
 do
@@ -36,16 +36,20 @@ do
   # Skip if the API_KEY is already a Machina protected string
   if [[ $API_KEY != ~!?!*!*! ]]; then
 
-    # Encrypt each API_KEY (The key is automatically created)
-    ENCRYPTED_API_KEY=$(machina --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
-        chunk encrypt -s "${API_KEY}" --metas "${ClientMetadata}")
+    # Skip if the API key is empty
+    if [ ! -z "$API_KEY" ]; then
 
-    replace='s#'${API_KEY}'#'${ENCRYPTED_API_KEY}'#'
+      # Encrypt each API_KEY (The key is automatically created)
+      ENCRYPTED_API_KEY=$(machina --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
+          chunk encrypt -s "${API_KEY}" --metas "${ClientMetadata}")
 
-    sed -i '' "${replace}" ./google-services.json
-    echo "Detected plain text API key and replaced it with: "${ENCRYPTED_API_KEY}
+      replace='s#'${API_KEY}'#'${ENCRYPTED_API_KEY}'#'
+
+      sed -i '' "${replace}" ./src/external-services.json
+      echo "Detected plain text API key and replaced it with: "${ENCRYPTED_API_KEY}
+    fi
   fi
 
 done
 
-git add ./google-services.json
+git add ./src/external-services.json

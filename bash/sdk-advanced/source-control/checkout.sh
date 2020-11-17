@@ -26,21 +26,25 @@ set -e
 ClientMetadata="ionic-application-name:CircleCI-Demo,ionic-application-version:1.0.0"
 
 # Create an array containing each API key that needs to be protected
-array=( $(cat ./google-services.json | jq '(.client[].api_key[].current_key)') )
+array=( $(cat ./src/external-services.json | jq '(.openWeatherMap.apiKey)') )
 
 for ENCRYPTED_API_KEY in ${array[@]}
 do
   # Remove quotes
   ENCRYPTED_API_KEY=$(sed -e 's/^"//' -e 's/"$//' <<<"$ENCRYPTED_API_KEY")
 
-  # Decrypt a string (The correlating key is automatically fetched)
-  API_KEY=$(machina --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
-      chunk decrypt -s "${ENCRYPTED_API_KEY}" --metas "${ClientMetadata}")
+  # Skip if the API key is empty
+  if [ ! -z "$API_KEY" ]; then
 
-  replace='s#'${ENCRYPTED_API_KEY}'#'${API_KEY}'#'
+    # Decrypt a string (The correlating key is automatically fetched)
+    API_KEY=$(machina --devicetype password --devicefile ${PERSISTOR_PATH} --devicepw ${IONIC_PERSISTOR_PASSWORD} \
+        chunk decrypt -s "${ENCRYPTED_API_KEY}" --metas "${ClientMetadata}")
 
-  sed -i '' "${replace}" ./google-services.json
+    replace='s#'${ENCRYPTED_API_KEY}'#'${API_KEY}'#'
 
-  echo "Detected encrypted API key '"${ENCRYPTED_API_KEY}"' and replaced it with plain text"
+    sed -i '' "${replace}" ./src/external-services.json
+
+    echo "Detected encrypted API key '"${ENCRYPTED_API_KEY}"' and replaced it with plain text"
+  fi
 
 done
