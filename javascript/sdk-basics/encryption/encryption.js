@@ -49,7 +49,7 @@ const main = async () => {
    ** SENDER
    **********************************************************/
   // Let's do an UTF-8 test.
-  const message = 'This is a secret message! in Ukrainian: Це таємне повідомлення!';
+  const message = 'This is a secret message! in Japanese: これは秘密のメッセージです!'
 
   console.log('Plain text:     ' + message);
 
