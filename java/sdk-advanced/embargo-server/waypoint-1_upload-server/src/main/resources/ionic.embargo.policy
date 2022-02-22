@@ -1,0 +1,66 @@
+{
+    "status": "Published",
+    "enabled": true,
+    "policyId": "ionic-embargo-policy",
+    "description": "All Data marked with an embargo date",
+    "ruleCombiningAlgId": "deny-overrides",
+    "target": {
+        "condition": {
+            "functionId": "string-is-in",
+            "args": [
+                {
+                    "value": "ionic-embargo"
+                },
+                {
+                    "category": "resource",
+                    "id": "ionic-cattr-ids"
+                }
+            ]
+        },
+        "anyOf": [
+            {
+                "allOf": [
+                    {
+                        "matchId": "string-is-in",
+                        "args": [
+                            {
+                                "value": "ionic-embargo"
+                            },
+                            {
+                                "category": "resource",
+                                "id": "ionic-cattr-ids"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "rules": [
+        {
+            "ruleId": "ionic-embargo-rule",
+            "effect": "Deny",
+            "description": "Current date is before the Embargo Date.",
+            "condition": {
+                "functionId": "dateTime-less-than",
+                "args": [
+                    {
+                        "category": "environment",
+                        "id": "current-dateTime"
+                    },
+                    {
+                        "category": "resource",
+                        "id": "ionic-embargo"
+                    }
+                ]
+            },
+            "settings": {
+                "readOnly": true
+            }
+        }
+    ],
+    "settings": {
+        "defaultPolicyVersion": 4,
+        "readOnly": true
+    }
+}

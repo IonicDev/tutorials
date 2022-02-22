@@ -1,0 +1,12 @@
+<--
+   (c) 2020-2021 Ionic Security Inc.  All rights reserved.
+   By using this code, I agree to the Privacy Policy (https://www.ionic.com/privacy-notice/),
+   and the License Agreement (https://dev.ionic.com/license).
+-->
+
+<?xml version='1.0' encoding='UTF-8'?>
+<Context reloadable="true">
+    <Resources>
+        <PreResources base="${catalina.base}/../../ionic" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/embargo" />
+    </Resources>
+</Context>
