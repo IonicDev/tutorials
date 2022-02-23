@@ -1,0 +1,15 @@
+.DS_Store
+target
+*.log
+
+# IDEs
+.classpath
+.project
+.idea
+.settings
+
+#Server files
+sep.json
+embargo.properties
+ionic/
+!src/**/ionic
