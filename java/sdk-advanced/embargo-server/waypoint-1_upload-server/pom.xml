@@ -28,7 +28,7 @@
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>1.4</version>  <!--2018-12-24-->
+            <version>1.5</version>  <!--2018-12-24-->
         </dependency>
         <dependency>
             <!-- download Tomcat install binary to local ".m2" replica (only downloaded once) -->
